@@ -22,7 +22,11 @@ body {
 }
 
 /* NavBar */
-/* NavBar */
+
+.f{
+    color: #5ce1e6;
+}
+
 nav {
     position: fixed;
     width: 100%;
@@ -87,7 +91,7 @@ nav ul li a:hover {
     color: white;
     text-align: center;
     padding: 190px 0;
-    padding-bottom: 30px;
+    padding-bottom: 60px;
 }
 
 #landing-page h1 {
@@ -101,7 +105,7 @@ nav ul li a:hover {
 
 #landing-page .btn {
     display: inline-block;
-    background-color: #009688;
+    background-color: #5ce1e6;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -110,7 +114,7 @@ nav ul li a:hover {
 }
 
 #landing-page .btn:hover {
-    background-color: #00796b;
+    background-color: #4ea8ac;
 }
 
 /* Carrossel Tecnologias */
@@ -416,6 +420,7 @@ to {
 .item24 {
     animation-delay: calc(30s / 24 * (24 - 24) * -1);
 }
+
 
 
 /* Responsivo Menu */
