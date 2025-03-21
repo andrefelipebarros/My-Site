@@ -11,6 +11,7 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
+    overflow-x: hidden;
 }
 
 /* Container geral */
@@ -20,6 +21,7 @@ body {
     max-width: 1200px;
 }
 
+/* NavBar */
 /* NavBar */
 nav {
     position: fixed;
@@ -31,7 +33,7 @@ nav {
 }
 
 nav.scrolled {
-    background-color: #202020; /* Torna o fundo escuro quando rolar */
+    background-color: #202020;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -64,7 +66,19 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff6347; /* Cor ao passar o mouse */
+    color: #ff6347;
+}
+
+/* Ícone de Hamburguer */
+.hamburger {
+    display: none;
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+}
+
+.bi-chevron-down{
+    font-size: 40px;
 }
 
 /* Estilo do Header/Landing Page */
@@ -72,7 +86,8 @@ nav ul li a:hover {
     background: #333;
     color: white;
     text-align: center;
-    padding: 180px 0;
+    padding: 190px 0;
+    padding-bottom: 30px;
 }
 
 #landing-page h1 {
@@ -100,7 +115,8 @@ nav ul li a:hover {
 
 /* Carrossel Tecnologias */
 .infinite-scroll{
-    background-color: white;
+    margin-top: 150px;
+    background-color: #333;
 }
 
 .item {
@@ -115,8 +131,8 @@ nav ul li a:hover {
     justify-content: center;
 }
 .item i {
-    font-size: 50px;
-    color: #333;
+    font-size: 34px;
+    color: #5ce1e6;
 }
 
 .carousel-container {
@@ -153,7 +169,7 @@ nav ul li a:hover {
 /* Seção Sobre */
 #sobre {
     background: #fff;
-    padding: 50px 0;
+    padding: 100px 0;
     text-align: center;
 }
 
@@ -271,7 +287,7 @@ footer {
 
 /* CSS do Carrossel Scroll Infinite */
 .wrapper {
-    width: 90%;
+    width: 400%;
     max-width: 1536px;
     margin-inline: auto;
     position: relative;
@@ -295,7 +311,7 @@ to {
 .item {
     width: 100px;
     height: 100px;
-    background-color: white;
+    background-color: #333;
     border-radius: 6px;
     position: absolute;
     left: 100%;
@@ -306,33 +322,124 @@ to {
 }
 
 .item1 {
-  animation-delay: calc(30s / 8 * (8 - 1) * -1);
+    animation-delay: calc(30s / 24 * (24 - 1) * -1);
 }
-
+  
 .item2 {
-  animation-delay: calc(30s / 8 * (8 - 2) * -1);
+    animation-delay: calc(30s / 24 * (24 - 2) * -1);
 }
-
+  
 .item3 {
-  animation-delay: calc(30s / 8 * (8 - 3) * -1);
+    animation-delay: calc(30s / 24 * (24 - 3) * -1);
 }
-
+  
 .item4 {
-  animation-delay: calc(30s / 8 * (8 - 4) * -1);
+    animation-delay: calc(30s / 24 * (24 - 4) * -1);
 }
-
+  
 .item5 {
-  animation-delay: calc(30s / 8 * (8 - 5) * -1);
+    animation-delay: calc(30s / 24 * (24 - 5) * -1);
 }
-
+  
 .item6 {
-  animation-delay: calc(30s / 8 * (8 - 6) * -1);
+    animation-delay: calc(30s / 24 * (24 - 6) * -1);
 }
-
+  
 .item7 {
-  animation-delay: calc(30s / 8 * (8 - 7) * -1);
+    animation-delay: calc(30s / 24 * (24 - 7) * -1);
+}
+  
+.item8 {
+    animation-delay: calc(30s / 24 * (24 - 8) * -1);
+}
+  
+.item9 {
+    animation-delay: calc(30s / 24 * (24 - 9) * -1);
+}
+  
+.item10 {
+    animation-delay: calc(30s / 24 * (24 - 10) * -1);
+}
+  
+.item11 {
+    animation-delay: calc(30s / 24 * (24 - 11) * -1);
+}
+  
+.item12 {
+    animation-delay: calc(30s / 24 * (24 - 12) * -1);
+}
+  
+.item13 {
+    animation-delay: calc(30s / 24 * (24 - 13) * -1);
+}
+  
+.item14 {
+    animation-delay: calc(30s / 24 * (24 - 14) * -1);
+}
+  
+.item15 {
+    animation-delay: calc(30s / 24 * (24 - 15) * -1);
+}
+  
+.item16 {
+    animation-delay: calc(30s / 24 * (24 - 16) * -1);
+}
+  
+.item17 {
+    animation-delay: calc(30s / 24 * (24 - 17) * -1);
+}
+  
+.item18 {
+    animation-delay: calc(30s / 24 * (24 - 18) * -1);
+}
+  
+.item19 {
+    animation-delay: calc(30s / 24 * (24 - 19) * -1);
+}
+  
+.item20 {
+    animation-delay: calc(30s / 24 * (24 - 20) * -1);
+}
+  
+.item21 {
+    animation-delay: calc(30s / 24 * (24 - 21) * -1);
+}
+  
+.item22 {
+    animation-delay: calc(30s / 24 * (24 - 22) * -1);
+}
+  
+.item23 {
+    animation-delay: calc(30s / 24 * (24 - 23) * -1);
+}
+  
+.item24 {
+    animation-delay: calc(30s / 24 * (24 - 24) * -1);
 }
 
-.item8 {
-  animation-delay: calc(30s / 8 * (8 - 8) * -1);
+
+/* Responsivo Menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 65px;
+        right: 20px;
+        background-color: #202020;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
 }
