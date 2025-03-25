@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@400;700&display=swap');
 
 /* Reset de estilo */
 * {
@@ -9,9 +10,8 @@
 
 /* Corpo do site */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
     color: #333;
     overflow-x: hidden;
 }
@@ -225,8 +225,6 @@ nav ul li a:hover {
     align-items: center;
 }
 
-
-
 #sobre .container {
     display: flex;
     align-items: center;
@@ -246,7 +244,7 @@ nav ul li a:hover {
 
 #sobre .foto img {
     width: 400px;
-    height: 400px;
+    height: 310px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -385,37 +383,63 @@ nav ul li a:hover {
     }
 }
 
-/* Seção Tecnologias */
-#tecnologias {
-    background: #f4f4f4;
-    padding: 50px 0;
+/* Seção Habilidades */
+#habilidades {
+    padding: 20px;
+    padding-top: 140px;
+    background-color: #ffffff;
+}
+
+#habilidades .container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#habilidades h2 {
     text-align: center;
+    font-size: 2rem;
 }
 
-#tecnologias h2 {
-    font-size: 2.5em;
-    margin-bottom: 30px;
+#habilidades .text-habilidades {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
 }
 
-#tecnologias ul {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    flex-wrap: wrap;
+#habilidades .minimun{
+    font-size: 13px;
+    font-weight: normal;
 }
 
-#tecnologias li {
-    margin: 20px;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#habilidades details {
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
 }
 
-#tecnologias img {
-    max-width: 60px;
+#habilidades summary {
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px;
+    cursor: pointer;
 }
+
+#habilidades details ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+#habilidades details li {
+    list-style-type: none;
+    padding: 5px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+#habilidades details li:last-child {
+    border-bottom: none;
+}
+
 
 /* Seção Projetos */
 #projetos {

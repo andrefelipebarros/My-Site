@@ -12,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <!-- Navbar -->
     <nav id="navbar">
         <div class="container">
             <a href="index.html" class="logo"><i><h1>A<span class="f">F</span></h1></i></a>
@@ -20,7 +21,8 @@
             </div>
             <ul id="nav-links">
                 <li><a href="#">Sobre</a></li>
-                <li><a href="#">Tecnologias</a></li>
+                <li><a href="#">Habilidades</a></li>
+                <li><a href="#">Projetos</a></li>
                 <li><a href="#">Projetos</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
@@ -132,13 +134,13 @@
 
     <!-- Sobre Mim -->
     <section id="sobre">
-        <h2>Sobre Mim</h2>
+        <h2 class="text-center text-2xl font-bold mb-4">Sobre Mim</h2>
         <p class="text-sobre">Minha introdução</p>
         
         <div class="container">
             <!-- Foto ou logo -->
             <div class="foto">
-                <img src="sua-foto-ou-logo.jpg" alt="Foto de André Felipe">
+                <img src="img/picture.jpeg" alt="Foto de André Felipe">
             </div>
             <!-- Métricas e conteúdo -->
             <div class="conteudo">
@@ -160,28 +162,74 @@
                 </div>
                 <!-- Botão de download do CV -->
                 <div class="botao-container">
-                    <a href="curriculo-andre-felipe.pdf" download class="botao-cv">Download CV</a>
+                    <a href="curriculo-andre-felipe.pdf" download class="botao-cv">
+                        Download CV <box-icon name='download' color='#ffffff' ></box-icon>
+                    </a>
+                    
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Tecnologias -->
-    <section id="tecnologias">
-        <div class="container">
-            <h2>Tecnologias que Eu Uso</h2>
-            <ul>
-                <li><img src="img/java-logo.png" alt="Java"></li>
-                <li><img src="img/spring-logo.png" alt="Spring Boot"></li>
-                <li><img src="img/angular-logo.png" alt="Angular"></li>
-                <li><img src="img/vue-logo.png" alt="Vue.js"></li>
-                <li><img src="img/ionic-logo.png" alt="Ionic"></li>
-                <li><img src="img/git-logo.png" alt="Git"></li>
-                <li><img src="img/docker-logo.png" alt="Docker"></li>
-            </ul>
+    <section id="habilidades" class="py-10 bg-gray-100">
+        <div class="container mx-auto max-w-lg">
+            <h2 class="text-center text-2xl font-bold mb-4">Habilidades</h2>
+            <h2 class="text-center text-lg text-gray-600 mb-6 text-habilidades">Ferramentas que tenho contato diariamente</h2>
+    
+            <div class="space-y-4">
+                <!-- Frontend -->
+                <details class="group bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
+                        <h1>Front-End <p class="minimun">Mais que 2 anos</p></h1>
+                        <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
+                        <li class="border-b py-1 text-gray-600">HTML</li>
+                        <li class="border-b py-1 text-gray-600">CSS</li>
+                        <li class="border-b py-1 text-gray-600">JavaScript</li>
+                        <li class="border-b py-1 text-gray-600">TypeScript</li>
+                        <li class="border-b py-1 text-gray-600">Angular</li>
+                        <li class="border-b py-1 text-gray-600">Vue.js</li>
+                        <li class="border-b py-1 text-gray-600">ReactJS</li>
+                        <li class="border-b py-1 text-gray-600">Ionic</li>
+                    </ul>
+                </details>
+    
+                <!-- Backend -->
+                <details class="group bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
+                        <h1>Back-End <p class="minimun">Mais que 2 anos</p></h1>
+                        <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
+                        <li class="border-b py-1 text-gray-600">Java</li>
+                        <li class="border-b py-1 text-gray-600">C#</li>
+                        <li class="border-b py-1 text-gray-600">Python</li>
+                        <li class="border-b py-1 text-gray-600">Node.js</li>
+                        <li class="border-b py-1 text-gray-600">PostgreSQL</li>
+                        <li class="border-b py-1 text-gray-600">SQLite</li>
+                        <li class="border-b py-1 text-gray-600">MySQL</li>
+                    </ul>
+                </details>
+    
+                <!-- DevOps -->
+                <details class="group bg-white p-4 rounded-lg">
+                    <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
+                        <h1>Banco de Dados & DevOps <p class="minimun">Mais que 2 anos</p></h1>
+                        <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
+                        <li class="border-b py-1 text-gray-600">Kubernetes</li>
+                        <li class="border-b py-1 text-gray-600">Podman</li>
+                        <li class="border-b py-1 text-gray-600">Docker</li>
+                        <li class="text-gray-600">Jenkins</li>
+                    </ul>
+                </details>
+            </div>
         </div>
     </section>
-
+    
     <!-- Projetos -->
     <section id="projetos">
         <div class="container">
