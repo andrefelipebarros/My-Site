@@ -32,6 +32,7 @@ body {
 /* NavBar */
 
 .f{
+    font-family: 'Poppins';
     color: #5ce1e6;
 }
 
@@ -119,6 +120,7 @@ nav ul li a:hover {
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+    transition: background 0.5s ease;
 }
 
 #landing-page .btn:hover {
@@ -183,18 +185,39 @@ nav ul li a:hover {
     position: relative;
     text-decoration: none;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #5b5e5e;
     color: white;
     border-radius: 5px;
     font-size: 16px;
+    transition: background 0.5s ease;
 }
+
+.btn-s {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #86d6b9;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.5s ease;
+}
+
+.btn-s:hover{
+    background-color: #375f61;
+};
+
+.btn:hover{
+    background-color: #375f61;
+};
 
 .dot {
     position: absolute;
     top: -5px;
     right: -5px;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     background-color: #ffffff;
 }
@@ -203,8 +226,8 @@ nav ul li a:hover {
     position: absolute;
     top: -5px;
     right: -5px;
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background-color: #ffffff;
 }
@@ -223,6 +246,11 @@ nav ul li a:hover {
 #sobre {
     padding-top: 100px;
     align-items: center;
+}
+
+#sobre box-icon {
+    width: 23px;
+    height: 23px;
 }
 
 #sobre .container {
@@ -262,6 +290,11 @@ nav ul li a:hover {
 
 #sobre .text-sobre {
     text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-decoration: none;
+    font-weight: lighter;
 }
 
 .conteudo p {
@@ -312,77 +345,6 @@ nav ul li a:hover {
     background: #46aaad;
 }
 
-@media screen and (max-width: 1244px) {
-    #sobre .foto img {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-
-@media screen and (max-width: 1022px) {
-    #sobre .foto img {
-        width: 200px;
-        height: 200px;
-    }
-
-    #sobre .conteudo p{
-        padding-left: 23px;
-        padding-right: 23px;
-    }
-    
-    #sobre .container {
-        flex-direction: column;
-        padding-left: 60px;
-        padding-right: 60px;
-        text-align: center;
-    }
-
-    #sobre .foto {
-        margin-bottom: 2rem;
-    }
-
-    #sobre .conteudo {
-        flex: 1;
-        text-align: center;
-    }
-
-    #sobre h2 {
-        font-size: 1.6rem;
-    }
-
-    #sobre .text-sobre {
-        font-size: 13px;
-    }
-
-    .conteudo p {
-        font-size: 0.9rem;
-    }
-
-    #sobre .metricas {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); 
-        gap: 1rem;
-        margin: 1.5rem 0;
-    }
-
-    #sobre .metricas .card-metrica {
-        text-align: center; 
-    }
-
-    #sobre .metricas .card-metrica h3 {
-        font-size: 1.5rem;
-    }
-
-    #sobre .metricas .card-metrica p {
-        font-size: 0.8rem;
-    }
-
-    #sobre .botao-cv {
-        padding: 1rem 2rem; /* Ajusta o tamanho do botão */
-    }
-}
-
 /* Seção Habilidades */
 #habilidades {
     padding: 20px;
@@ -404,6 +366,8 @@ nav ul li a:hover {
     font-size: 1rem;
     line-height: 1.6;
     color: #333;
+    text-decoration: none;
+    font-weight: lighter;
 }
 
 #habilidades .minimun{
@@ -441,72 +405,346 @@ nav ul li a:hover {
 }
 
 
+
 /* Seção Projetos */
 #projetos {
-    padding: 50px 0;
+    padding-top: 7%;
     background: #fff;
+}
+
+
+#projetos h2 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#projetos .text-projetos {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+.projects-wrapper {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.carousel-area {
+    flex: 3;
+    position: relative;
+}
+
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-page {
+    display: none;
+    width: 100%;
     text-align: center;
 }
 
-#projetos .project-card {
-    background: #e4e4e4;
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px;
-    max-width: 300px;
+.project-page:first-child {
+    display: block;
+}
+
+.project-card {
     display: inline-block;
     vertical-align: top;
-}
-
-#projetos img {
-    max-width: 100%;
-    height: auto;
+    width: 470px; /* Ajuste conforme necessário */
+    height: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
     border-radius: 8px;
+    margin: 10px;
+    text-align: left;
+    overflow: hidden;
 }
 
-/* Seção Contato */
-#contato {
-    background: #f4f4f4;
-    padding: 50px 0;
+.project-card .p-tag{
+    border-radius: 13px;
+    color: #68cccf;
+}
+
+.project-card img {
+    width: 100px; /* Ajuste conforme necessário */
+    height: auto;
+    border-radius: 5px;
+    margin-right: 15px; /* Espaço entre a imagem e o texto */
+    float: left; /* Imagem à esquerda */
+}
+
+.project-info {
+    overflow: hidden; /* Garante que o texto se ajustará ao lado da imagem */
+}
+
+.project-info h3{
+    font-weight: bold;
+}
+
+.project-info p{
+    font-size: 13px;
+}
+
+.carousel-indicators {
     text-align: center;
+    margin-top: 20px;
+}
+
+.carousel-indicators span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carousel-indicators span.active {
+    background-color: #333;
+}
+
+.filters-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 250px;
+    margin: 0;
+}
+
+.filters-container h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.filters-container label[for="status-filter"] {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.filters-container select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    background-color: #fff;
+}
+
+.filters-container select option {
+    padding: 8px;
+}
+
+.filters-container select option[value="todos"] {
+    background-color: #5df5f5;
+    color: #0f32cf;
+}
+
+.filters-container select option[value="andamento"] {
+    background-color: #f7f56a;
+    color: #e65100;
+}
+
+.filters-container select option[value="concluido"] {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: border 0.3s;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    border-color: #007bff;
+    background-color: #007bff;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: "✓";
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    left: 3px;
+}
+
+/* Contato */
+
+#contato {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-radius: 15px; /* Borda arredondada */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin: 50px auto; /* Centraliza na página */
+}
+
+#contato .container {
+    text-align: left; /* Alinha texto à esquerda */
+    flex: 1; /* Ocupa espaço à esquerda */
 }
 
 #contato h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
 }
 
-#contato form {
-    max-width: 600px;
-    margin: 0 auto;
+#contato p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
 }
 
-#contato input, #contato textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#contato button {
-    background-color: #009688;
+.btn-primary {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #5ce1e6;
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
 }
 
-#contato button:hover {
-    background-color: #00796b;
+.btn-primary:hover {
+    background-color: #46aaad;
 }
+
+.contato-img {
+    width: 200px; /* Ajuste o tamanho da imagem */
+    height: auto;
+    border-radius: 10px; /* Bordas arredondadas */
+}
+
+
+
+/* Informações de Contato */
+#info-contato .text-sobre {
+    padding-bottom: 60px;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+#info-contato {
+    padding-top: 6%;
+    padding-bottom: 3%;
+    display: left;
+    justify-content: left;
+    align-items: left;
+    height: 50vh; /* Centraliza verticalmente */
+}
+
+#info-contato .container {
+    text-align: left; /* Garante alinhamento à esquerda */
+    width: auto; /* Define uma largura para melhor visualização */
+}
+
+#info-contato h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.info-item {
+    padding-left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaço entre ícone e texto */
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: #007bff;
+    flex-shrink: 0; /* Garante que o ícone não seja redimensionado */
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column; /* Faz o texto aparecer abaixo do título */
+}
+
 
 /* Footer */
 footer {
-    background: #333;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-left {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.footer-icons {
+    display: flex;
+    gap: 10px;
+}
+.footer-icons a {
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+/* Footer André Felipe */
+.footer-left span {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.footer-left small {
+    font-size: 0.9rem;
+    color: #bbb;
 }
 
 
@@ -656,5 +894,159 @@ to {
 
     nav ul li {
         margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 1244px) {
+    #sobre .foto img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 1022px) {
+    #sobre .foto img {
+        width: 200px;
+        height: 200px;
+    }
+
+    #sobre .conteudo p{
+        padding-left: 23px;
+        padding-right: 23px;
+    }
+    
+    #sobre .container {
+        flex-direction: column;
+        padding-left: 60px;
+        padding-right: 60px;
+        text-align: center;
+    }
+
+    #sobre .foto {
+        margin-bottom: 2rem;
+    }
+
+    #sobre .conteudo {
+        flex: 1;
+        text-align: center;
+    }
+
+    #sobre h2 {
+        font-size: 1.6rem;
+    }
+
+    #sobre .text-sobre {
+        font-size: 13px;
+    }
+
+    .conteudo p {
+        font-size: 0.9rem;
+    }
+
+    #sobre .metricas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+
+    #sobre .metricas .card-metrica {
+        text-align: center; 
+    }
+
+    #sobre .metricas .card-metrica h3 {
+        font-size: 1.5rem;
+    }
+
+    #sobre .metricas .card-metrica p {
+        font-size: 0.8rem;
+    }
+
+    #sobre .botao-cv {
+        padding: 1rem 2rem; /* Ajusta o tamanho do botão */
+    }
+
+    #habilidades h2 {
+        font-size: 1.6rem;
+    }
+    
+    #habilidades .text-habilidades {
+        font-size: 13px;
+    }    
+
+    #projetos .text-projetos {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    #projetos .text-projetos {
+        font-size: 13px;
+    }    
+
+    #projetos h2 {
+        font-size: 1.6rem;
+    }
+
+    #info-contato h2 {
+        font-size: 1.6rem;
+    }
+
+    #info-contato .text-sobre {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .projects-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+  /* Faz com que a caixa de filtros apareça no topo */
+    .filters-container {
+        order: -1; /* Coloca os filtros antes dos projetos */
+        width: 90%; /* Ocupa quase toda a largura */
+        max-width: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        text-align: center; /* Texto centralizado */
+    }
+    
+    /* Alinha os checkboxes centralizados */
+    .filters-container .checkbox-group {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filters-container label {
+        font-size: 0.9rem;
+        margin: 0;
+    }
+    
+    /* Ajusta o dropdown para ser mais compacto */
+    .filters-container select {
+        width: 90%;
+        padding: 6px 8px;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .project-card h3 {
+        font-size: 1.1rem;  /* Título um pouco menor */
+    }
+    
+    .project-card p {
+        font-size: 0.9rem;  /* Parágrafos menores */
+    }
+    
+    .project-card a.btn {
+        font-size: 0.9rem;  /* Botão também em fonte menor */
+    }
+
+    .project-card a.btn-s {
+        font-size: 0.9rem;  /* Botão também em fonte menor */
     }
 }

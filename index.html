@@ -15,16 +15,15 @@
     <!-- Navbar -->
     <nav id="navbar">
         <div class="container">
-            <a href="index.html" class="logo"><i><h1>A<span class="f">F</span></h1></i></a>
+            <a href="index.html" class="logo"><i><h1 class="font-[Poppins]">A<span class="f font-[Poppins]">F</span></h1></i></a>
             <div class="hamburger" id="hamburger">
                 ☰
             </div>
             <ul id="nav-links">
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Habilidades</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Projetos</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#projetos">Portfólio</a></li>
+                <li><a href="#footer">Contato</a></li>
             </ul>
         </div>
     </nav>
@@ -35,7 +34,7 @@
             <h1>Olá, sou André Felipe</h1>
             <p>Desenvolvedor Full Stack</p>
             <a href="#sobre" class="btn">Saiba Mais 
-                <span class="dot animate-ping">
+                <span class="dot2 animate-ping">
                 </span><span class="dot2"></span>
             </a>
         </div>
@@ -134,7 +133,7 @@
 
     <!-- Sobre Mim -->
     <section id="sobre">
-        <h2 class="text-center text-2xl font-bold mb-4">Sobre Mim</h2>
+        <h2 class="text-center text-2xl font-bold">Sobre Mim</h2>
         <p class="text-sobre">Minha introdução</p>
         
         <div class="container">
@@ -174,14 +173,20 @@
     <!-- Tecnologias -->
     <section id="habilidades" class="py-10 bg-gray-100">
         <div class="container mx-auto max-w-lg">
-            <h2 class="text-center text-2xl font-bold mb-4">Habilidades</h2>
+            <h2 class="text-center text-2xl font-bold">Habilidades</h2>
             <h2 class="text-center text-lg text-gray-600 mb-6 text-habilidades">Ferramentas que tenho contato diariamente</h2>
-    
+
             <div class="space-y-4">
                 <!-- Frontend -->
                 <details class="group bg-white p-4 rounded-lg">
                     <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
-                        <h1>Front-End <p class="minimun">Mais que 2 anos</p></h1>
+                        <div class="flex items-center">
+                            <box-icon size="sm" name="code-alt" color="#5ce1e6" class="mr-2"></box-icon>
+                            <div>
+                                <h1>Front-End</h1>
+                                <p class="text-sm text-gray-500">Mais que 2 anos</p>
+                            </div>
+                        </div>
                         <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
                     </summary>
                     <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
@@ -195,11 +200,17 @@
                         <li class="border-b py-1 text-gray-600">Ionic</li>
                     </ul>
                 </details>
-    
+
                 <!-- Backend -->
                 <details class="group bg-white p-4 rounded-lg">
                     <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
-                        <h1>Back-End <p class="minimun">Mais que 2 anos</p></h1>
+                        <div class="flex items-center">
+                            <box-icon size="sm" name="server" color="#ff9f43" class="mr-2"></box-icon>
+                            <div>
+                                <h1>Back-End</h1>
+                                <p class="text-sm text-gray-500">Mais que 2 anos</p>
+                            </div>
+                        </div>
                         <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
                     </summary>
                     <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
@@ -212,11 +223,17 @@
                         <li class="border-b py-1 text-gray-600">MySQL</li>
                     </ul>
                 </details>
-    
+
                 <!-- DevOps -->
                 <details class="group bg-white p-4 rounded-lg">
                     <summary class="cursor-pointer text-lg font-semibold text-gray-700 flex justify-between items-center">
-                        <h1>Banco de Dados & DevOps <p class="minimun">Mais que 2 anos</p></h1>
+                        <div class="flex items-center">
+                            <box-icon size="sm" name="git-branch" color="#ff4757" class="mr-2"></box-icon>
+                            <div>
+                                <h1>DevOps</h1>
+                                <p class="text-sm text-gray-500">Mais que 2 anos</p>
+                            </div>
+                        </div>
                         <span class="transition-transform duration-300 group-open:rotate-180">▼</span>
                     </summary>
                     <ul class="mt-2 space-y-2 transition-all duration-300 ease-in-out opacity-0 group-open:opacity-100">
@@ -229,54 +246,115 @@
             </div>
         </div>
     </section>
-    
-    <!-- Projetos -->
+
     <section id="projetos">
         <div class="container">
-            <h2>Meus Projetos</h2>
-            <div class="project-card">
-                <img src="img/project1.png" alt="Projeto 1">
-                <h3>Projeto de Cadastro de Usuários</h3>
-                <p>API REST construída com Spring Boot e Angular para cadastro de usuários.</p>
-                <a href="https://github.com/seu-github" class="btn">Ver no GitHub</a>
+            <h2 class="text-center text-2xl font-bold">Portfólio</h2>
+            <h2 class="text-center text-lg text-gray-600 mb-6 text-projetos">Trabalhos mais recentes</h2>
+        
+        <!-- Wrapper com dois painéis: Projetos e Filtros -->
+        <div class="projects-wrapper">
+            
+            <!-- Área dos Projetos (Carrossel) -->
+            <div class="carousel-area">
+            <div class="project-container"></div>
+            <!-- Indicadores do Carrossel -->
+            <div class="carousel-indicators"></div>
             </div>
-            <div class="project-card">
-                <img src="img/project2.png" alt="Projeto 2">
-                <h3>Aplicativo de Tarefas com Ionic</h3>
-                <p>Aplicativo móvel utilizando Ionic e Firebase para gerenciamento de tarefas.</p>
-                <a href="https://github.com/seu-github" class="btn">Ver no GitHub</a>
+            
+            <!-- Área dos Filtros (fixa à direita) -->
+            <div class="filters-container">
+            <!-- Dropdown para status -->
+            <label for="status-filter">Status:</label>
+            <select id="status-filter">
+                <option value="todos">Todos</option>
+                <option value="andamento">Em andamento</option>
+                <option value="concluido">Concluído</option>
+            </select>
+            
+            <!-- Checkboxes para Tecnologias -->
+            <div class="checkbox-group">
+                <label><input type="checkbox" class="filter-checkbox" value="HTML"> HTML</label>
+                <label><input type="checkbox" class="filter-checkbox" value="CSS"> CSS</label>
+                <label><input type="checkbox" class="filter-checkbox" value="JavaScript"> JavaScript</label>
+                <label><input type="checkbox" class="filter-checkbox" value="ReactJS"> ReactJS</label>
+                <label><input type="checkbox" class="filter-checkbox" value="Angular"> Angular</label>
             </div>
-            <!-- Adicione mais cards de projetos aqui -->
+            </div>
+            
+        </div>
         </div>
     </section>
-
+    
     <!-- Contato -->
     <section id="contato">
         <div class="container">
-            <h2>Contato</h2>
-            <form action="mailto:seu-email@dominio.com" method="post" enctype="text/plain">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+            <h2>Você tem um novo projeto?</h2>
+            <p>Entre em contato comigo e vamos desenvolver sua ideia!</p>
+            <a href="mailto:afbarrosan@gmail.com" class="btn btn-primary">Contacte-me</a>
+        </div>
+        <img src="Img/af-contact.png" alt="Imagem de contato" class="contato-img">
+    </section>
 
-                <label for="mensagem">Mensagem:</label>
-                <textarea id="mensagem" name="mensagem" required></textarea>
+    <!-- Informações de Contato -->
+    <section id="info-contato">
+        <div class="container">
+            <h2 class="text-center text-2xl font-bold">Contato</h2>
+            <p class="text-sobre text-center">Entre em contato comigo!</p>
+            
+            <div class="info-item">
+                <i class="bi bi-telephone" style="color: #5ce1e6;"></i>
+                <div class="info-text">
+                    <strong>Me ligue:</strong>
+                    <span>+55 (21) 99199-4808</span>
+                </div>
+            </div>
 
-                <button type="submit" class="btn">Enviar</button>
-            </form>
+            <div class="info-item">
+                <i class="bi bi-envelope" style="color: #5ce1e6;"></i>
+                <div class="info-text">
+                    <strong>Email:</strong>
+                    <span>afbarrosan@gmail.com</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="bi bi-map" style="color: #5ce1e6;"></i>
+                <div class="info-text">
+                    <strong>Localização:</strong>
+                    <span>Brasil - Rio de Janeiro</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 [Seu Nome]. Todos os direitos reservados.</p>
+    <!-- Footer -->
+    <footer id="footer" class="bg-[#333] text-white py-10">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">
+                André <span class="text-[#5ce1e6]">Felipe</span>
+            </h1>
+            <p class="text-lg text-gray-400">Desenvolvedor Full-Stack</p>
+            
+            <div class="flex justify-center space-x-6 mt-4">
+                <a href="https://github.com/seu-github" target="_blank" class="text-gray-400 hover:text-[#5ce1e6] text-2xl">
+                    <i class="bi bi-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/seu-linkedin" target="_blank" class="text-gray-400 hover:text-[#5ce1e6] text-2xl">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="mailto:seu-email@email.com" class="text-gray-400 hover:text-[#5ce1e6] text-2xl">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </div>
+    
+            <p class="mt-6 text-gray-500 text-sm">&copy; 2024 André Felipe. Todos os direitos reservados.</p>
         </div>
-    </footer>
+    </footer>    
 
     <script src="js/menu.js"></script>
     <script src="js/navbar.js"></script>
+    <script src="js/dynamic-projects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
