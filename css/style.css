@@ -10,10 +10,14 @@
 
 /* Corpo do site */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -32,7 +36,7 @@ body {
 /* NavBar */
 
 .f{
-    font-family: 'Poppins';
+    font-family: 'Poppins', sans-serif;
     color: #5ce1e6;
 }
 
@@ -46,7 +50,7 @@ nav {
 }
 
 nav.scrolled {
-    background-color: #202020;
+    background-color: #333;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -457,7 +461,7 @@ nav ul li a:hover {
 .project-card {
     display: inline-block;
     vertical-align: top;
-    width: 470px; /* Ajuste conforme necessário */
+    width: 460px; /* Ajuste conforme necessário */
     height: 300px;
     padding: 15px;
     border: 1px solid #ccc;
@@ -611,7 +615,7 @@ nav ul li a:hover {
     align-items: center;
     width: 700px;
     padding: 40px;
-    background-color: #f8f9fa;
+    background-color: #333;
     border-radius: 15px; /* Borda arredondada */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
     margin: 50px auto; /* Centraliza na página */
@@ -624,12 +628,13 @@ nav ul li a:hover {
 
 #contato h2 {
     font-size: 1.8rem;
+    color: white;
     font-weight: bold;
 }
 
 #contato p {
     font-size: 1rem;
-    color: #555;
+    color: #f8f9fa;
     margin-bottom: 15px;
 }
 
@@ -1049,4 +1054,72 @@ to {
     .project-card a.btn-s {
         font-size: 0.9rem;  /* Botão também em fonte menor */
     }
+}
+
+
+@media (max-width: 768px) {
+    #contato {
+        flex-direction: row; /* Manter imagem e texto lado a lado */
+        padding: 20px;
+        width: 100%; /* Ajuste a largura para telas menores */
+        border-radius: 0%;
+    }
+
+    #contato .container {
+        text-align: center; /* Mantém o texto alinhado à esquerda */
+        margin-bottom: 0; /* Remove o espaçamento inferior */
+    }
+
+    #contato h2 {
+        font-size: 1.5rem; /* Reduz o tamanho do título */
+    }
+
+    #contato p {
+        font-size: 0.9rem; /* Reduz o tamanho do texto */
+    }
+
+    .contato-img {
+        width: 180px; /* Ajuste o tamanho da imagem */
+        margin-left: 20px; /* Adiciona um pequeno espaço entre a imagem e o texto */
+    }
+}
+
+/* Responsividade para telas menores que 567px */
+@media (max-width: 567px) {
+    #contato {
+        flex-direction: column; /* Muda para coluna para telas muito pequenas */
+        padding: 15px;
+    }
+
+    .contato-img {
+        width: 150px; /* Reduz o tamanho da imagem */
+        margin-top: 20px; /* Adiciona espaçamento superior */
+    }
+}
+
+
+/* SCROOL EIXO Y DESIGN */
+
+/* Estilizando o track (parte onde o "thumb" desliza) */
+::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+/* Estilizando a parte da barra de rolagem onde o usuário clica */
+::-webkit-scrollbar-track {
+  background: #333; /* Cor de fundo da parte da barra */
+  border-radius: 10px; /* Bordas arredondadas */
+  /* Isso vai garantir que não haja nenhum espaço branco onde o scroll para */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3); /* Sombra interna para maior definição */
+}
+
+/* Estilizando o "thumb" (parte que o usuário arrasta) */
+::-webkit-scrollbar-thumb {
+  background: #5ce1e6; /* Cor do thumb */
+  border-radius: 10px; /* Bordas arredondadas */
+}
+
+/* Mudando a cor do thumb quando o usuário passa o mouse em cima */
+::-webkit-scrollbar-thumb:hover {
+  background: #00fffb; /* Cor do thumb ao passar o mouse */
 }
