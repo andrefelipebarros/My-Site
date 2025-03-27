@@ -43,7 +43,7 @@ h1, h2, h3 {
 nav {
     position: fixed;
     width: 100%;
-    padding: 15px 20px;
+    padding: 2px 20px;
     background-color: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
@@ -878,7 +878,10 @@ to {
 /* Responsivo Menu */
 @media (max-width: 768px) {
     .hamburger {
+        padding-top: 0%;
+        padding-bottom: 0%;
         display: block;
+        font-size: 1.7em;
     }
 
     nav ul {
@@ -887,7 +890,7 @@ to {
         position: absolute;
         top: 65px;
         right: 20px;
-        background-color: #202020;
+        background-color: #333;
         padding: 10px;
         border-radius: 8px;
     }
