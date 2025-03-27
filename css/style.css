@@ -1013,13 +1013,20 @@ to {
         font-size: 1.6rem;
     }
 
-    /* Ajustes nas informações de contato */
     #info-contato h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem; /* Reduz o tamanho do título */
     }
 
     #info-contato .text-sobre {
-        font-size: 13px;
+        font-size: 0.9rem; /* Reduz o tamanho do texto */
+    }
+
+    #info-contato .info-item i {
+        font-size: 1.3rem; /* Reduz o tamanho dos ícones */
+    }
+
+    #info-contato .info-text {
+        font-size: 0.9rem; /* Ajusta o tamanho do texto */
     }
 
 }
@@ -1028,6 +1035,26 @@ to {
 @media screen and (max-width: 600px) {
     #sobre .metricas {
         grid-template-columns: 0.2fr; /* 1 coluna em telas pequenas */
+    }
+
+    #info-contato h2 {
+        font-size: 1.6rem; /* Tamanho do título menor */
+    }
+
+    #info-contato .text-sobre {
+        font-size: 0.8rem; /* Reduz ainda mais o texto */
+    }
+
+    #info-contato .info-item {
+        align-items: flex-start; /* Alinha os itens à esquerda */
+    }
+
+    #info-contato .info-item i {
+        font-size: 1.2rem; /* Reduz os ícones para celular */
+    }
+
+    #info-contato .info-text {
+        font-size: 0.9rem; /* Ajuste no tamanho do texto */
     }
 }
 
