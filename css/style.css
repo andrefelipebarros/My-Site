@@ -899,9 +899,17 @@ to {
     nav ul li {
         margin: 10px 0;
     }
+
+    #landing-page h1 {
+        font-size: 2em;
+    }
+
+    #landing-page p {
+        font-size: 1.05em;
+        margin-top: 10px;
+    }
 }
 
-/* RESPONSIVO SOBRE */
 /* RESPONSIVO SOBRE */
 @media screen and (max-width: 1244px) {
     #sobre .foto img {
