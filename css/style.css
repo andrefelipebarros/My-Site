@@ -43,7 +43,7 @@ h1, h2, h3 {
 nav {
     position: fixed;
     width: 100%;
-    padding: 2px 20px;
+    padding: 6px 20px;
     background-color: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
