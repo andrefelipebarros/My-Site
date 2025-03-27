@@ -519,6 +519,7 @@ nav ul li a:hover {
     max-width: 250px;
     margin: 0;
     padding-top: 0%;
+    margin-right: 120px;
 }
 
 .filters-container h3 {
@@ -1046,6 +1047,7 @@ to {
         max-width: none;
         padding: 10px;
         margin-bottom: 20px;
+        margin-right: 0px;
         text-align: center; /* Texto centralizado */
     }
     
@@ -1055,6 +1057,7 @@ to {
         justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
+        padding-left: 20px;
     }
     
     .filters-container label {
@@ -1073,7 +1076,7 @@ to {
     .project-card {
         display: inline-block;
         vertical-align: top;
-        width: 400px; /* Ajuste conforme necessário */
+        width: 370px; /* Ajuste conforme necessário */
         height: 300px;
         padding: 15px;
         border: 1px solid #ccc;
