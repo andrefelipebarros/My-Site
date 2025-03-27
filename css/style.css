@@ -310,6 +310,7 @@ nav ul li a:hover {
 #sobre .metricas .card-metrica {
     flex: 1;
     text-align: center;
+    width: 12px;
 }
 
 #sobre .metricas .card-metrica h3 {
@@ -456,7 +457,7 @@ nav ul li a:hover {
 .project-card {
     display: inline-block;
     vertical-align: top;
-    width: 460px; /* Ajuste conforme necessário */
+    width: 370px; /* Ajuste conforme necessário */
     height: 300px;
     padding: 15px;
     border: 1px solid #ccc;
@@ -511,11 +512,13 @@ nav ul li a:hover {
 }
 
 .filters-container {
+    padding-top: 1px;
     background: white;
     padding: 20px;
     border-radius: 8px;
     max-width: 250px;
     margin: 0;
+    padding-top: 0%;
 }
 
 .filters-container h3 {
@@ -973,6 +976,22 @@ to {
         padding: 1rem 2rem; /* Ajuste o tamanho do botão */
     }
 
+    #sobre .metricas .card-metrica {
+        flex: 1;
+        text-align: center;
+        width: 30px;
+    }
+    
+    #sobre .metricas .card-metrica h3 {
+        font-size: 1.3rem;
+        color: #4ab7bb;
+    }
+    
+    #sobre .metricas .card-metrica p {
+        font-size: 0.8rem;
+        color: #555;
+    }
+
     /* Ajustes nas habilidades */
     #habilidades h2 {
         font-size: 1.6rem;
@@ -1001,12 +1020,13 @@ to {
     #info-contato .text-sobre {
         font-size: 13px;
     }
+
 }
 
 /* Responsividade para telas menores (como celulares) */
 @media screen and (max-width: 600px) {
     #sobre .metricas {
-        grid-template-columns: 1fr; /* 1 coluna em telas pequenas */
+        grid-template-columns: 0.2fr; /* 1 coluna em telas pequenas */
     }
 }
 
@@ -1048,6 +1068,18 @@ to {
         padding: 6px 8px;
         margin: 10px auto;
         display: block;
+    }
+
+    .project-card {
+        display: inline-block;
+        vertical-align: top;
+        width: 400px; /* Ajuste conforme necessário */
+        height: 300px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 10px;
+        text-align: left;
     }
 
     .project-card h3 {
