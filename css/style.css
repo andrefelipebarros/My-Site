@@ -440,12 +440,20 @@ nav ul li a:hover {
 
 .project-container {
     display: flex;
+
+    overflow-x: auto; /* libera a rolagem horizontal */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* melhora a experiência em dispositivos iOS */
+    scroll-behavior: smooth;
+    user-select: none;
+    
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .project-page {
-    display: none;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
     width: 100%;
     text-align: center;
 }
