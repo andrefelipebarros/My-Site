@@ -465,7 +465,7 @@ nav ul li a:hover {
 .project-card {
     display: inline-block;
     vertical-align: top;
-    width: 370px; /* Ajuste conforme necessário */
+    width: 400px; /* Ajuste conforme necessário */
     height: 300px;
     padding: 15px;
     border: 1px solid #ccc;
@@ -477,6 +477,7 @@ nav ul li a:hover {
 
 .project-card .p-tag{
     border-radius: 13px;
+    font-size: 10px;
     color: #68cccf;
 }
 

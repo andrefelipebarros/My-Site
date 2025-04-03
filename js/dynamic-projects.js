@@ -1,12 +1,32 @@
 // Lista de Projetos 
 const projetos = [
-    { id: 1, titulo: "Projeto de Cadastro de Usuários", descricao: "API REST construída com Spring Boot e Angular para cadastro de usuários.", tecnologias: ["HTML", "CSS", "JavaScript"], status: "concluido", link: "https://github.com/seu-github", imagem: "" },
-    { id: 2, titulo: "Aplicativo de Tarefas com Ionic", descricao: "Aplicativo móvel utilizando Ionic e Firebase para gerenciamento de tarefas.", tecnologias: ["Ionic", "Firebase", "JavaScript"], status: "andamento", link: "https://github.com/seu-github", imagem: "" },
-    { id: 3, titulo: "Projeto de E-commerce", descricao: "Aplicação de e-commerce com Vue.js e Firebase.", tecnologias: ["Vue.js", "JavaScript", "Firebase"], status: "concluido", link: "https://github.com/seu-github", imagem: "" },
-    { id: 4, titulo: "Sistema de Gestão de Tarefas", descricao: "Aplicação com ReactJS para gerenciamento de tarefas.", tecnologias: ["ReactJS", "JavaScript"], status: "andamento", link: "https://github.com/seu-github", imagem: "" },
-    { id: 5, titulo: "Projeto de Blog", descricao: "Blog com Node.js e MongoDB.", tecnologias: ["Node.js", "MongoDB"], status: "concluido", link: "https://github.com/seu-github", imagem: "" },
-    { id: 6, titulo: "App de Clima", descricao: "App para previsão do tempo com React Native.", tecnologias: ["React Native", "JavaScript"], status: "andamento", link: "https://github.com/seu-github", imagem: "" },
-    // Adicione mais projetos conforme necessário
+    {
+        "id": 1,
+        "titulo": "VavaHelper",
+        "descricao": "Esse projeto é um guia para iniciantes em Valorant, oferecendo dicas, tutoriais e recursos para melhorar a jogabilidade. Será multiplataforma, garantindo acessibilidade e uma experiência intuitiva.",
+        "tecnologias": ["Java", "SQL", "JSON", "TypeScript"],
+        "status": "andamento",
+        "link": "",
+        "imagem": ""
+    },
+    {
+        "id": 2,
+        "titulo": "SecureTimeNotes",
+        "descricao": "Esse projeto é um aplicativo de anotações, permitindo criar, editar e organizar notas com praticidade. Também possui cronômetro para estudos integrado e um calendário para compromissos.",
+        "tecnologias": ["Java", "SQL", "TypeScript"],
+        "status": "andamento",
+        "link": "https://github.com/seu-github",
+        "imagem": ""
+    },
+    {
+        "id": 3,
+        "titulo": "Hórus",
+        "descricao": "O Projeto Hórus promove a cibersegurança, oferecendo uma aplicação mobile e artigos para usuários, desenvolvedores e empresas que buscam proteção no ambiente digital.",
+        "tecnologias": ["TypeScript", "Cibersegurança", "Figma", "Artigos Técnicos"],
+        "status": "andamento",
+        "link": "https://github.com/seu-github",
+        "imagem": ""
+    }
 ];
 
 // Variável global para a página atual
@@ -23,7 +43,7 @@ function renderProjects(filteredProjects) {
     projectContainer.innerHTML = '';
 
     // Define quantidade de projetos por página conforme a largura da tela:
-    const projectsPerPage = window.innerWidth < 768 ? 1 : 2;
+    const projectsPerPage = window.innerWidth < 1280 ? 1 : 2;
     const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
     createIndicators(totalPages);
 
