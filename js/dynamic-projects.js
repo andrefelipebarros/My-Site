@@ -6,7 +6,8 @@ const projetos = [
         "descricao": "Esse projeto é um guia para iniciantes em Valorant, oferecendo dicas, tutoriais e recursos para melhorar a jogabilidade. Será multiplataforma, garantindo acessibilidade e uma experiência intuitiva.",
         "tecnologias": ["Java", "SQL", "JSON", "TypeScript"],
         "status": "andamento",
-        "link": "",
+        "link": "https://github.com/VavaHelper",
+        "link2": "https://github.com/VavaHelper/Vava-API",
         "imagem": ""
     },
     {
@@ -15,7 +16,8 @@ const projetos = [
         "descricao": "Esse projeto é um aplicativo de anotações, permitindo criar, editar e organizar notas com praticidade. Também possui cronômetro para estudos integrado e um calendário para compromissos.",
         "tecnologias": ["Java", "SQL", "TypeScript"],
         "status": "andamento",
-        "link": "https://github.com/seu-github",
+        "link": "https://github.com/andrefelipebarros/SecureTimeNotes",
+        "link2": "https://securetimenotes.netlify.app/",
         "imagem": ""
     },
     {
@@ -24,7 +26,8 @@ const projetos = [
         "descricao": "O Projeto Hórus promove a cibersegurança, oferecendo uma aplicação mobile e artigos para usuários, desenvolvedores e empresas que buscam proteção no ambiente digital.",
         "tecnologias": ["TypeScript", "Cibersegurança", "Figma", "Artigos Técnicos"],
         "status": "andamento",
-        "link": "https://github.com/seu-github",
+        "link": "https://www.instagram.com/projeto_horusuva/",
+        "link2": "",
         "imagem": ""
     }
 ];
@@ -67,7 +70,7 @@ function renderProjects(filteredProjects) {
                         <p>${projeto.descricao}</p>
                         <p class="p-tag"><strong>${projeto.tecnologias.join(" / ")}</strong></p>
                         <a href="${projeto.link}" class="btn">GitHub</a>
-                        <a href="${projeto.link}" class="btn-s">Build</a>
+                        <a href="${projeto.link2}" class="btn-s">Build</a>
                     </div>
                 </div>
             `;
