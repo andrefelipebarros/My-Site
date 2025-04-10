@@ -2,35 +2,77 @@
 const projetos = [
     {
         "id": 1,
-        "titulo": "VavaHelper",
-        "descricao": "Esse projeto é um guia para iniciantes em Valorant, oferecendo dicas, tutoriais e recursos para melhorar a jogabilidade. Será multiplataforma, garantindo acessibilidade e uma experiência intuitiva.",
-        "tecnologias": ["Java", "SQL", "JSON", "TypeScript"],
+        "titulo": "VavaHelper - Frontend",
+        "descricao": "Interface desenvolvida para auxiliar jogadores iniciantes de Valorant. O frontend é intuitivo, responsivo e conecta com a API para exibir dicas, tutoriais e recursos.",
+        "tecnologias": ["TypeScript", "React", "CSS"],
         "status": "andamento",
         "link": "https://github.com/VavaHelper",
-        "link2": "https://github.com/VavaHelper/Vava-API",
+        "link2": "https://github.com/VavaHelper",
         "imagem": "./img/VavaHelper.png"
     },
     {
         "id": 2,
-        "titulo": "SecureTimeNotes",
-        "descricao": "Esse projeto é um aplicativo de anotações, permitindo criar, editar e organizar notas com praticidade. Também possui cronômetro para estudos integrado e um calendário para compromissos.",
-        "tecnologias": ["Java", "SQL", "TypeScript"],
+        "titulo": "VavaHelper - Backend",
+        "descricao": "API desenvolvida em Java para fornecer dados e dicas ao frontend do VavaHelper. Gerencia informações úteis aos jogadores e fornece rotas organizadas para consumo.",
+        "tecnologias": ["Java", "Spring Boot", "SQL", "JSON"],
+        "status": "andamento",
+        "link": "https://github.com/VavaHelper/Vava-API",
+        "link2": "https://github.com/VavaHelper/Vava-API",
+        "imagem": "./img/VavaHelper.png"
+    },
+    {
+        "id": 3,
+        "titulo": "SecureTimeNotes - Frontend",
+        "descricao": "Interface moderna e responsiva para gerenciamento de anotações. Permite criar, editar, organizar notas, usar cronômetro e visualizar calendário.",
+        "tecnologias": ["TypeScript", "Angular", "CSS"],
         "status": "andamento",
         "link": "https://github.com/andrefelipebarros/SecureTimeNotes",
         "link2": "https://securetimenotes.netlify.app/",
         "imagem": "./img/SecureTimeNotes.png"
     },
     {
-        "id": 3,
-        "titulo": "Hórus",
+        "id": 4,
+        "titulo": "SecureTimeNotes - Backend",
+        "descricao": "Backend responsável pelo gerenciamento das notas, usuários e funcionalidades como cronômetro e calendário, utilizando Java e Spring Boot.",
+        "tecnologias": ["Java", "SQL", "Spring Boot"],
+        "status": "concluido",
+        "link": "https://github.com/andrefelipebarros/SecureTimeNotes",
+        "link2": "https://securetimenotes.up.railway.app/swagger",
+        "imagem": "./img/SecureTimeNotes.png"
+    },
+    {
+        "id": 5,
+        "titulo": "Hórus - Frontend",
         "descricao": "O Projeto Hórus promove a cibersegurança, oferecendo uma aplicação mobile e artigos para usuários, desenvolvedores e empresas que buscam proteção no ambiente digital.",
-        "tecnologias": ["TypeScript", "Cibersegurança", "Figma", "Artigos Técnicos"],
-        "status": "andamento",
+        "tecnologias": ["TypeScript", "React", "Cibersegurança", "Artigos Técnicos"],
+        "status": "concluido",
         "link": "https://www.instagram.com/projeto_horusuva/",
-        "link2": "",
+        "link2": "https://projeto-horus-web.vercel.app/",
         "imagem": "./img/horus.jpg"
+    },
+    {
+        "id": 6,
+        "titulo": "UserCRUD - Backend",
+        "descricao": "CRUD básico de usuários utilizando Spring Boot. Implementa criptografia de senhas com Bcrypt e validação de palavras ofensivas no nome. Seguro e funcional.",
+        "tecnologias": ["Java", "Spring Boot", "BCrypt", "REST"],
+        "status": "concluído",
+        "link": "https://github.com/andrefelipebarros/UserCRUD-Seguro",
+        "link2": "",
+        "imagem": "./img/usercrud.png"
+    },
+    {
+        "id": 7,
+        "titulo": "UserCRUD - Frontend",
+        "descricao": "CRUD básico de usuários utilizando Spring Boot. Implementa criptografia de senhas com Bcrypt e validação de palavras ofensivas no nome. Seguro e funcional.",
+        "tecnologias": ["TypeScript", "Angular", "CSS"],
+        "status": "concluído",
+        "link": "https://github.com/andrefelipebarros/UserCRUD-Seguro",
+        "link2": "",
+        "imagem": "./img/usercrud.png"
     }
 ];
+
+
 
 // Variável global para a página atual
 let currentPage = 0;
