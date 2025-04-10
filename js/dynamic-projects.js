@@ -67,7 +67,7 @@ const projetos = [
         "tecnologias": ["TypeScript", "Angular", "CSS"],
         "status": "concluído",
         "link": "https://github.com/andrefelipebarros/UserCRUD-Seguro",
-        "link2": "",
+        "link2": "https://first-full-stack-project-angular.vercel.app/",
         "imagem": "./img/usercrud.png"
     }
 ];
