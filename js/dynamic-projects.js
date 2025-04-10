@@ -8,7 +8,7 @@ const projetos = [
         "status": "andamento",
         "link": "https://github.com/VavaHelper",
         "link2": "https://github.com/VavaHelper/Vava-API",
-        "imagem": ""
+        "imagem": "./img/VavaHelper.png"
     },
     {
         "id": 2,
@@ -18,7 +18,7 @@ const projetos = [
         "status": "andamento",
         "link": "https://github.com/andrefelipebarros/SecureTimeNotes",
         "link2": "https://securetimenotes.netlify.app/",
-        "imagem": ""
+        "imagem": "./img/SecureTimeNotes.png"
     },
     {
         "id": 3,
@@ -28,7 +28,7 @@ const projetos = [
         "status": "andamento",
         "link": "https://www.instagram.com/projeto_horusuva/",
         "link2": "",
-        "imagem": ""
+        "imagem": "./img/horus.jpg"
     }
 ];
 
