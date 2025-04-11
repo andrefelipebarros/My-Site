@@ -520,6 +520,38 @@ nav ul li a:hover {
     background-color: #333;
 }
 
+.carousel-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    /* Efeito vidro */
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 11.5px );
+    -webkit-backdrop-filter: blur( 11.5px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    color: #333;
+    border: none;
+    padding: 10px;
+    width: 40px;
+    height: 40px ;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+  
+/* Botão da esquerda */
+.carousel-btn.left {
+    left: 10px;
+}
+  
+/* Botão da direita */
+.carousel-btn.right {
+    right: 10px;
+}
+  
 .filters-container {
     padding-top: 1px;
     background: white;
@@ -881,8 +913,12 @@ to {
     animation-delay: calc(30s / 21 * (21 - 21) * -1);
 }
 
-
-
+  /* Ocultar as setas em dispositivos responsivos (ex: telas menores que 768px) */
+  @media (max-width: 1000px) {
+    .carousel-btn {
+      display: none;
+    }
+  }
 
 /* Responsivo Menu */
 @media (max-width: 768px) {
@@ -1222,4 +1258,10 @@ to {
 /* Mudando a cor do thumb quando o usuário passa o mouse em cima */
 ::-webkit-scrollbar-thumb:hover {
   background: #00fffb; /* Cor do thumb ao passar o mouse */
+}
+
+
+/* Corrigir summary naveador Safari */
+summary::-webkit-details-marker {
+    display: none;
 }

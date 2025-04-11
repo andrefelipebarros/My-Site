@@ -127,6 +127,18 @@ function renderProjects(filteredProjects) {
     showPage(currentPage);
 }
 
+// Mudar a página com os botões
+function changePage(direction) {
+    const totalPages = document.querySelectorAll('.project-page').length;
+    currentPage += direction;
+    if (currentPage < 0) {
+      currentPage = 0;
+    } else if (currentPage >= totalPages) {
+      currentPage = totalPages - 1;
+    }
+    showPage(currentPage);
+  }
+
 // Cria os indicadores do carrossel
 function createIndicators(totalPages) {
     const indicatorsContainer = document.querySelector('.carousel-indicators');
