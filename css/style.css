@@ -247,7 +247,6 @@ nav ul li a:hover {
 
 
 /* Seção Sobre */
-/* Seção Sobre */
 #sobre {
     padding-top: 100px;
     display: flex;
@@ -272,8 +271,8 @@ nav ul li a:hover {
 }
 
 #sobre .foto img {
-    width: 400px;
-    height: 310px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
