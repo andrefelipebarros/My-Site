@@ -57,7 +57,7 @@ const projetos = [
         "tecnologias": ["Java", "Spring Boot", "BCrypt", "REST"],
         "status": "concluído",
         "link": "https://github.com/andrefelipebarros/UserCRUD-Seguro",
-        "link2": "",
+        "link2": "https://first-full-stack-project.up.railway.app/docs",
         "imagem": "./img/usercrud.png"
     },
     {
