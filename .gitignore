@@ -1,0 +1,47 @@
+# --- Dependências ---
+node_modules/
+.pnpm-store/
+
+# --- Next.js ---
+.next/
+out/
+build/
+dist/
+
+# --- Variáveis de Ambiente (MUITO IMPORTANTE) ---
+# Nunca suba suas chaves secretas para o GitHub
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+
+# --- Logs e Debug ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# --- Sistema Operacional (Lixo de sistema) ---
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Editores de Código ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Vercel (Se for usar deploy na Vercel) ---
+.vercel/
+
+# --- TypeScript ---
+# Opcional: Algumas pessoas ignoram, outras não. 
+# O padrão do create-next-app geralmente mantém o arquivo, mas não o conteúdo gerado.
+*.tsbuildinfo
+next-env.d.ts

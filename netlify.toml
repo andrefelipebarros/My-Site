@@ -1,0 +1,9 @@
+[build]
+  # Comando para construir o site usando pnpm
+  command = "pnpm run build"
+  # Pasta que o Netlify deve publicar (Padrão do Next.js no Netlify)
+  publish = ".next"
+
+# Garante que o Netlify use o plugin essencial para Next.js (SSR, API Routes, etc.)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
