@@ -82,3 +82,4 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://www.goog
 <div align="center">
 Desenvolvido com 💜 por <a href="https://github.com/andrefelipebarros">André Felipe Barros</a>
 </div>
+ 
