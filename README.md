@@ -66,7 +66,7 @@ Este repositório passou por uma grande refatoração. Caso precise consultar a 
 Para acessar o código antigo:
 
 * Vá até a aba **[Releases/Tags](https://www.google.com/search?q=https://github.com/andrefelipebarros/My-Site/tags)** no GitHub.
-* Procure pela tag `v0.1.0` ou `backup-legacy`.
+* Procure pela tag `v1.0.0` ou `backup-legacy`.
 * Ou via terminal: `git checkout versao-1.0`
 
 ## 🤝 Contribuição
