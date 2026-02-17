@@ -67,7 +67,7 @@ Para acessar o código antigo:
 
 * Vá até a aba **[Releases/Tags](https://www.google.com/search?q=https://github.com/andrefelipebarros/My-Site/tags)** no GitHub.
 * Procure pela tag `v0.1.0` ou `backup-legacy`.
-* Ou via terminal: `git checkout v0.1.0`
+* Ou via terminal: `git checkout versao-1.0`
 
 ## 🤝 Contribuição
 
