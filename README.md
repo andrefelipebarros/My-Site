@@ -40,9 +40,8 @@ Certifique-se de ter o **Node.js** e o **pnpm** instalados.
 
 1. **Clone o repositório:**
 ```bash
-git clone [https://github.com/andrefelipebarros/My-Site.git](https://github.com/andrefelipebarros/My-Site.git)
+git clone https://github.com/andrefelipebarros/My-Site
 cd My-Site
-
 ```
 
 
