@@ -8,7 +8,14 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Proxy reverso: exibe o projeto "sabiodiario" mantendo a URL do domínio principal
+# 1. Regra para a URL exata (SEM a barra no final) - Resolve o erro de Loop (ERR_TOO_MANY_REDIRECTS)
+[[redirects]]
+  from = "/sabiodiario"
+  to = "https://sabiodiario.netlify.app/sabiodiario"
+  status = 200
+  force = true
+
+# 2. Proxy reverso: exibe as subpáginas e arquivos do projeto "sabiodiario" mantendo a URL do domínio principal
 [[redirects]]
   from = "/sabiodiario/*"
   to = "https://sabiodiario.netlify.app/sabiodiario/:splat"
