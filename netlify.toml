@@ -7,3 +7,10 @@
 # Garante que o Netlify use o plugin essencial para Next.js (SSR, API Routes, etc.)
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# Proxy reverso: exibe o projeto "sabiodiario" mantendo a URL do domínio principal
+[[redirects]]
+  from = "/sabiodiario/*"
+  to = "https://sabiodiario.netlify.app/sabiodiario/:splat"
+  status = 200
+  force = true
