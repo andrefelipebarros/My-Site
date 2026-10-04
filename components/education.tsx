@@ -2,6 +2,7 @@
 
 import { useLocale } from "@/lib/locale-context";
 import { GraduationCap, MapPin, Calendar } from "lucide-react";
+import { Reveal, SectionTitle } from "@/components/reveal";
 
 export function Education() {
   const { t } = useLocale();
@@ -21,15 +22,14 @@ export function Education() {
 
   return (
     <section id="education" className="px-6 py-24 lg:px-16">
-      <h2 className="text-3xl font-bold text-foreground">
-        {t.education.title}
-      </h2>
-      <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+      <SectionTitle>{t.education.title}</SectionTitle>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {degrees.map((deg) => (
-          <div
+        {degrees.map((deg, i) => (
+          <Reveal
             key={deg.degree}
+            variant={i % 2 === 0 ? "left" : "right"}
+            delay={i * 150}
             className="relative rounded-xl border border-border bg-card p-6 transition-colors hover:border-primary/40"
           >
             {deg.inProgress && (
@@ -56,7 +56,7 @@ export function Education() {
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               {deg.description}
             </p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
