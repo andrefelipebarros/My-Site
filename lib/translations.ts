@@ -1,3 +1,6 @@
+import { projectItems } from "./projects-data";
+import { certificationItems } from "./certifications-data";
+
 export type Locale = "pt" | "en";
 
 export const translations = {
@@ -115,93 +118,14 @@ export const translations = {
     },
     certifications: {
       title: "Certifications",
-      items: [
-        {
-          name: "AWS Certified Cloud Practitioner",
-          issuer: "Amazon - AWS",
-        },
-        {
-          name: "MongoDB Java Developer Path",
-          issuer: "MongoDB",
-        },
-        {
-          name: "Build .NET applications with C#",
-          issuer: "Microsoft",
-        },
-        {
-          name: "Create a web API with ASP.NET Core Controllers",
-          issuer: "Microsoft",
-        },
-        {
-          name: "Treinamento Gestão de Risco Operacional e Segurança da Informação",
-          issuer: "BNDES",
-        },
-        {
-          name: "PostgreSQL: From Beginner to Intermediate 2023",
-          issuer: "Udemy",
-        },
-        {
-          name: "Spring Security: Proteja suas Aplicações Web",
-          issuer: "Alura",
-        },
-        {
-          name: "Learning the Basics of ABAP Programming on SAP BTP",
-          issuer: "SAP",
-        },
-        {
-          name: "Excel: Domine o Editor de Planilhas",
-          issuer: "Alura",
-        },
-        {
-          name: "Bootcamp - Java Cloud Native",
-          issuer: "Fundação Bradesco",
-        },
-        {
-          name: "Internet das Coisas (IoT), IA e Revolução Conectada",
-          issuer: "PUCRS-Online",
-        },
-      ],
+      items: certificationItems.en,
     },
     projects: {
       title: "Featured Projects",
       viewCode: "View Code",
-      items: [
-        {
-          name: "BiSyllab Web Design",
-          description:
-            "A web-based syllable division tool for Portuguese language learning, built with HTML, CSS, and JavaScript with an intuitive and responsive interface.",
-          techs: ["HTML", "CSS", "JavaScript"],
-          url: "https://github.com/andrefelipebarros/BiSyllab-Web-Design",
-        },
-        {
-          name: "Personal Website",
-          description:
-            "A personal portfolio and project showcase site built with modern web technologies and responsive design principles.",
-          techs: ["HTML", "CSS", "JavaScript"],
-          url: "https://github.com/andrefelipebarros/meu-projeto-site",
-        },
-        {
-          name: "First Game - Unity",
-          description:
-            "A 2D platformer game developed in Unity with C#, featuring player mechanics, level design, and game physics.",
-          techs: ["C#", "Unity"],
-          url: "https://github.com/andrefelipebarros/FirstGameUnity",
-        },
-        {
-          name: "Flappy Bird Clone",
-          description:
-            "A Flappy Bird-inspired game built in Unity as a learning exercise in game development, physics, and score tracking.",
-          techs: ["C#", "Unity"],
-          url: "https://github.com/andrefelipebarros/Game-inspired-by-Flappy-Bird-Unity",
-        },
-        {
-          name: "Visual Novel - Ren'Py",
-          description:
-            "A light novel game developed in Python using the Ren'Py engine with branching narrative paths and custom artwork.",
-          techs: ["Python", "Ren'Py"],
-          url: "https://github.com/andrefelipebarros/First-Game-for-Ren-Py",
-        },
-      ],
+      viewSite: "Live Site",
+      techLabel: "Technologies",
+      items: projectItems.en,
     },
     contact: {
       title: "Get in Touch",
@@ -324,93 +248,14 @@ export const translations = {
     },
     certifications: {
       title: "Certificações",
-      items: [
-        {
-          name: "AWS Certified Cloud Practitioner",
-          issuer: "Amazon - AWS",
-        },
-        {
-          name: "MongoDB Java Developer Path",
-          issuer: "MongoDB",
-        },
-        {
-          name: "Build .NET applications with C#",
-          issuer: "Microsoft",
-        },
-        {
-          name: "Create a web API with ASP.NET Core Controllers",
-          issuer: "Microsoft",
-        },
-        {
-          name: "Treinamento Gestão de Risco Operacional e Segurança da Informação",
-          issuer: "BNDES",
-        },
-        {
-          name: "PostgreSQL: From Beginner to Intermediate 2023",
-          issuer: "Udemy",
-        },
-        {
-          name: "Spring Security: Proteja suas Aplicações Web",
-          issuer: "Alura",
-        },
-        {
-          name: "Learning the Basics of ABAP Programming on SAP BTP",
-          issuer: "SAP",
-        },
-        {
-          name: "Excel: Domine o Editor de Planilhas",
-          issuer: "Alura",
-        },
-        {
-          name: "Bootcamp - Java Cloud Native",
-          issuer: "Fundação Bradesco",
-        },
-        {
-          name: "Internet das Coisas (IoT), IA e Revolução Conectada",
-          issuer: "PUCRS-Online",
-        },
-      ],
+      items: certificationItems.pt,
     },
     projects: {
       title: "Projetos em Destaque",
       viewCode: "Ver Código",
-      items: [
-        {
-          name: "BiSyllab Web Design",
-          description:
-            "Uma ferramenta web de divisão silábica para aprendizado da língua portuguesa, construída com HTML, CSS e JavaScript com interface intuitiva e responsiva.",
-          techs: ["HTML", "CSS", "JavaScript"],
-          url: "https://github.com/andrefelipebarros/BiSyllab-Web-Design",
-        },
-        {
-          name: "Site Pessoal",
-          description:
-            "Um portfólio pessoal e vitrine de projetos construído com tecnologias web modernas e princípios de design responsivo.",
-          techs: ["HTML", "CSS", "JavaScript"],
-          url: "https://github.com/andrefelipebarros/meu-projeto-site",
-        },
-        {
-          name: "Primeiro Jogo - Unity",
-          description:
-            "Um jogo de plataforma 2D desenvolvido em Unity com C#, com mecânicas de jogador, design de níveis e física de jogo.",
-          techs: ["C#", "Unity"],
-          url: "https://github.com/andrefelipebarros/FirstGameUnity",
-        },
-        {
-          name: "Clone do Flappy Bird",
-          description:
-            "Um jogo inspirado no Flappy Bird construído em Unity como exercício de aprendizado em desenvolvimento de jogos, física e rastreamento de pontuação.",
-          techs: ["C#", "Unity"],
-          url: "https://github.com/andrefelipebarros/Game-inspired-by-Flappy-Bird-Unity",
-        },
-        {
-          name: "Visual Novel - Ren'Py",
-          description:
-            "Um jogo de light novel desenvolvido em Python usando a engine Ren'Py com caminhos narrativos ramificados e arte personalizada.",
-          techs: ["Python", "Ren'Py"],
-          url: "https://github.com/andrefelipebarros/First-Game-for-Ren-Py",
-        },
-      ],
+      viewSite: "Ver Site",
+      techLabel: "Tecnologias",
+      items: projectItems.pt,
     },
     contact: {
       title: "Entre em Contato",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/lib/locale-context";
+import { Reveal, SectionTitle } from "@/components/reveal";
 // Import do Briefcase removido pois não será mais usado
 
 export function Experience() {
@@ -8,24 +9,21 @@ export function Experience() {
 
   return (
     <section id="experience" className="px-6 py-24 lg:px-16">
-      <h2 className="text-3xl font-bold text-foreground">
-        {t.experience.title}
-      </h2>
-      <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+      <SectionTitle>{t.experience.title}</SectionTitle>
 
       <div className="mt-10 space-y-8">
         {t.experience.jobs.map((job, i) => (
           // Adicionei a classe 'group' aqui. 
           // Isso permite detectar o hover em todo esse bloco para animar a bolinha.
-          <div key={i} className="group relative pl-8">
+          <Reveal key={i} variant="left" className="group relative pl-8">
             
             {/* Timeline line */}
             {i < t.experience.jobs.length - 1 && (
-              <div className="absolute left-[13px] top-10 h-[calc(100%+2rem)] w-px bg-border" />
+              <div className="absolute left-[13px] top-10 h-[calc(100%+2rem)] w-px origin-top scale-y-0 bg-border transition-transform delay-500 duration-1000 ease-out group-data-[revealed=true]/reveal:scale-y-100" />
             )}
 
             {/* Timeline dot (A Bolinha) */}
-            <div className="absolute left-0 top-1 flex h-7 w-7 items-center justify-center rounded-full border-2 border-accent bg-background transition-colors">
+            <div className="absolute left-0 top-1 flex h-7 w-7 scale-50 items-center justify-center rounded-full border-2 border-accent bg-background opacity-0 transition-all delay-200 duration-500 group-data-[revealed=true]/reveal:scale-100 group-data-[revealed=true]/reveal:opacity-100">
               {/* Esta é a bolinha interna.
                   - scale-0 opacity-0: Começa invisível e pequena.
                   - group-hover: Aparece quando passa o mouse no job.
@@ -72,7 +70,7 @@ export function Experience() {
                 ))}
               </div>
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

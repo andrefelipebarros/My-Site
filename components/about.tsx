@@ -1,6 +1,7 @@
 "use client";
 
 import { useLocale } from "@/lib/locale-context";
+import { Reveal, SectionTitle } from "@/components/reveal";
 
 const techStack: Record<string, string[]> = {
   backend: ["Java", "Quarkus", "Spring Boot", "Python", "Node.js", "Express.js", "C#", "PHP", "ASP.NET Core", ".NET Framework","Django", "Hibernate", "JPA / JDBC", "Maven", "Gradle", "fastapi", "Flask", "Spring Data JPA", "Spring Security", "Spring Cloud"],
@@ -18,22 +19,27 @@ export function About() {
 
   return (
     <section id="about" className="px-6 py-24 lg:px-16">
-      <h2 className="text-3xl font-bold text-foreground">{t.about.title}</h2>
-      <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+      <SectionTitle>{t.about.title}</SectionTitle>
 
       <div className="mt-10 max-w-2xl space-y-4 leading-relaxed text-muted-foreground">
-        <p>{t.about.p1}</p>
-        <p>{t.about.p2}</p>
-        <p>{t.about.p3}</p>
+        <Reveal><p>{t.about.p1}</p></Reveal>
+        <Reveal delay={120}><p>{t.about.p2}</p></Reveal>
+        <Reveal delay={240}><p>{t.about.p3}</p></Reveal>
       </div>
 
-      <h3 className="mt-12 text-xl font-semibold text-foreground">
-        {t.about.techTitle}
-      </h3>
+      <Reveal className="mt-12">
+        <h3 className="text-xl font-semibold text-foreground">
+          {t.about.techTitle}
+        </h3>
+      </Reveal>
 
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {categoryKeys.map((key) => (
-          <div key={key} className="rounded-xl border border-border bg-card p-5">
+        {categoryKeys.map((key, i) => (
+          <Reveal
+            key={key}
+            delay={(i % 3) * 120}
+            className="rounded-xl border border-border bg-card p-5"
+          >
             <h4 className="mb-3 font-mono text-xs font-semibold uppercase tracking-wider text-accent">
               {t.about.categories[key as keyof typeof t.about.categories]}
             </h4>
@@ -47,7 +53,7 @@ export function About() {
                 </span>
               ))}
             </div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
