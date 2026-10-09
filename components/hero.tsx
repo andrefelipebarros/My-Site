@@ -28,11 +28,14 @@ export function Hero() {
           <p className="mb-4 font-mono text-sm tracking-[0.25em] text-accent">
             {t.hero.label}
           </p>
-          <h1 className="text-balance text-4xl font-bold leading-tight text-foreground md:text-5xl lg:text-6xl">
-            Andre Felipe
-            <br />
-            de Barros A. N.
-          </h1>
+          <div className="flex items-center gap-2 sm:gap-4">
+            <h1 className="min-w-0 text-balance text-4xl font-bold leading-tight text-foreground max-[340px]:text-3xl md:text-5xl lg:text-6xl">
+              Andre Felipe
+              <br />
+              de Barros A. N.
+            </h1>
+            <TechIconColumn inline />
+          </div>
           <p className="mt-4 text-lg text-muted-foreground">
             {t.hero.subtitle}
           </p>

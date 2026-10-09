@@ -181,7 +181,7 @@ function initSlots(): number[] {
   return indices;
 }
 
-export function TechIconColumn() {
+export function TechIconColumn({ inline = false }: { inline?: boolean }) {
   const [slots, setSlots] = useState<number[]>(initSlots);
   const [animatingSlot, setAnimatingSlot] = useState<number | null>(null);
   const [phase, setPhase] = useState<"out" | "in">("in");
@@ -214,6 +214,27 @@ export function TechIconColumn() {
     const interval = setInterval(swapSlot, SWAP_INTERVAL);
     return () => clearInterval(interval);
   }, [swapSlot]);
+
+  /* Versão compacta para celular/tablet: fica ao lado do nome */
+  if (inline) {
+    const icon = techIcons[slots[0]];
+    const isOut = animatingSlot === 0 && phase === "out";
+    return (
+      <div
+        aria-hidden="true"
+        className="flex h-10 w-10 shrink-0 items-center justify-center max-[340px]:h-8 max-[340px]:w-8 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:hidden"
+      >
+        <div
+          className="h-full w-full transition-all duration-500 ease-in-out"
+          style={{
+            opacity: isOut ? 0 : 1,
+            transform: isOut ? "scale(0.6)" : "scale(1)",
+          }}
+          dangerouslySetInnerHTML={{ __html: icon.svg }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="hidden lg:flex flex-col items-center justify-center gap-6 w-64">

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocale } from "@/lib/locale-context";
 import { CloudSun, Code2, ExternalLink, FolderGit2, Webhook } from "lucide-react";
 import { techIcons } from "@/lib/tech-icons";
+import { SectionTitle } from "@/components/reveal";
 
 /** Scrolling (in viewport heights) needed to move the track by one card. */
 const VH_PER_STEP = 45;
@@ -68,12 +69,164 @@ function uniqueTechs(techs: readonly string[]) {
   });
 }
 
+type Project = ReturnType<typeof useLocale>["t"]["projects"]["items"][number];
+
+/** Everything inside a project card (shared by the desktop and phone carousels). */
+function ProjectCardBody({ project }: { project: Project }) {
+  const { t } = useLocale();
+
+  return (
+    <>
+      <div className="mb-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
+            <FolderGit2 className="h-5 w-5 text-accent" />
+          </div>
+          {project.tag && (
+            <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-xs text-muted-foreground">
+              {project.tag}
+            </span>
+          )}
+        </div>
+        <a
+          href={project.url || project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-muted-foreground transition-colors hover:text-accent"
+          aria-label={`${project.url ? t.projects.viewCode : t.projects.viewSite} - ${project.name}`}
+        >
+          <ExternalLink className="h-4 w-4" />
+        </a>
+      </div>
+
+      <h3 className="text-lg font-semibold text-card-foreground">
+        {project.name}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        {project.description}
+      </p>
+
+      <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+        {t.projects.techLabel}
+      </p>
+      <div className="mt-3 grid grid-cols-4 gap-x-2 gap-y-3 text-card-foreground sm:grid-cols-6">
+        {uniqueTechs(project.techs).map((tech) => (
+          <div
+            key={tech}
+            className="flex flex-col items-center gap-1.5 text-center"
+          >
+            <TechLogo name={tech} />
+            <span className="text-[11px] font-medium leading-tight">
+              {techIcons[tech]?.label ?? tech}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4">
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+          >
+            {t.projects.viewCode}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        )}
+        {project.demo && (
+          <a
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
+          >
+            {t.projects.viewSite}
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        )}
+      </div>
+    </>
+  );
+}
+
+/** Phone carousel: swipe sideways, cards snap into place. */
+function ProjectsSwipe() {
+  const { t } = useLocale();
+  const items = t.projects.items;
+  const count = items.length;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  const cardStep = () => {
+    const first = trackRef.current?.firstElementChild as HTMLElement | null;
+    return first ? first.offsetWidth + 16 : 1;
+  };
+
+  const onScroll = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    setActive(
+      atEnd ? count - 1 : clamp(Math.round(el.scrollLeft / cardStep()), 0, count - 1),
+    );
+  };
+
+  const goTo = (i: number) =>
+    trackRef.current?.scrollTo({ left: i * cardStep(), behavior: "smooth" });
+
+  return (
+    <div className="carousel-mobile pb-16 pt-24">
+      <div className="px-6">
+        <SectionTitle>{t.projects.title}</SectionTitle>
+      </div>
+
+      <div
+        ref={trackRef}
+        onScroll={onScroll}
+        className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {items.map((project, i) => (
+          <article
+            key={project.name}
+            className={`flex w-[82vw] max-w-sm shrink-0 snap-start flex-col rounded-xl border bg-card p-5 ${
+              i === active ? "border-primary/40" : "border-border"
+            }`}
+          >
+            <ProjectCardBody project={project} />
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-4 flex items-center gap-2 px-6">
+        {items.map((project, i) => (
+          <button
+            key={project.name}
+            type="button"
+            onClick={() => goTo(i)}
+            aria-label={project.name}
+            aria-current={i === active}
+            className="py-2"
+          >
+            <span
+              className={`block h-1.5 rounded-full transition-all duration-300 ${
+                i === active ? "w-8 bg-accent" : "w-4 bg-border"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Projects() {
   const { t } = useLocale();
   const items = t.projects.items;
   const count = items.length;
 
-  const wrapperRef = useRef<HTMLElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const firstCardRef = useRef<HTMLElement>(null);
 
@@ -86,7 +239,7 @@ export function Projects() {
     const measure = () => {
       const stage = stageRef.current;
       const card = firstCardRef.current;
-      if (!stage || !card) return;
+      if (!stage || !card || stage.clientWidth === 0) return;
       const step = card.offsetWidth + GAP;
       const pad = card.offsetLeft;
       const contentWidth = pad * 2 + count * step - GAP;
@@ -136,12 +289,14 @@ export function Projects() {
   const pos = shift / metrics.step; // how many cards have moved past the start
 
   return (
-    <section
-      id="projects"
-      ref={wrapperRef}
-      style={{ height: `calc(100svh + ${steps * VH_PER_STEP}svh)` }}
-      className="relative"
-    >
+    <section id="projects">
+      <ProjectsSwipe />
+
+      <div
+        ref={wrapperRef}
+        style={{ height: `calc(100svh + ${steps * VH_PER_STEP}svh)` }}
+        className="carousel-desktop relative"
+      >
       <div
         ref={stageRef}
         className="sticky top-0 flex h-svh flex-col justify-center gap-8 overflow-hidden pt-14 lg:pt-0"
@@ -177,76 +332,7 @@ export function Projects() {
                   opacity: 1 - leaving * 0.9,
                 }}
               >
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
-                      <FolderGit2 className="h-5 w-5 text-accent" />
-                    </div>
-                    {project.tag && (
-                      <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-xs text-muted-foreground">
-                        {project.tag}
-                      </span>
-                    )}
-                  </div>
-                  <a
-                    href={project.url || project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-muted-foreground transition-colors hover:text-accent"
-                    aria-label={`${project.url ? t.projects.viewCode : t.projects.viewSite} - ${project.name}`}
-                  >
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                </div>
-
-                <h3 className="text-lg font-semibold text-card-foreground">
-                  {project.name}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
-
-                <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                  {t.projects.techLabel}
-                </p>
-                <div className="mt-3 grid grid-cols-4 gap-x-2 gap-y-3 text-card-foreground sm:grid-cols-6">
-                  {uniqueTechs(project.techs).map((tech) => (
-                    <div
-                      key={tech}
-                      className="flex flex-col items-center gap-1.5 text-center"
-                    >
-                      <TechLogo name={tech} />
-                      <span className="text-[11px] font-medium leading-tight">
-                        {techIcons[tech]?.label ?? tech}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4">
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-                    >
-                      {t.projects.viewCode}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                  {project.demo && (
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-                    >
-                      {t.projects.viewSite}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </div>
+                <ProjectCardBody project={project} />
               </article>
             );
           })}
@@ -263,6 +349,7 @@ export function Projects() {
             </div>
           </div>
         )}
+      </div>
       </div>
     </section>
   );

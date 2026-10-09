@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Projects carousel: scroll-driven on big screens, swipe on phones.
+     Short landscape phones also get the swipe version. */
+  .carousel-desktop {
+    display: none;
+  }
+  @media (min-width: 768px) and (min-height: 640px) {
+    .carousel-desktop {
+      display: block;
+    }
+    .carousel-mobile {
+      display: none;
+    }
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -85,7 +101,11 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: clip;
+  }
   body {
     @apply bg-background text-foreground;
+    overflow-x: clip;
   }
 }
