@@ -1,243 +1,94 @@
 "use client";
 
+import { PixelMark } from "@/components/pixel-mark";
+import { FlagBR, FlagUS } from "@/components/flags";
+
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { useLocale } from "@/lib/locale-context";
-import {
-  Home,
-  User,
-  GraduationCap,
-  Briefcase,
-  Award,
-  FolderGit2,
-  Mail,
-  Sun,
-  Moon,
-  Monitor,
-  Globe,
-  Menu,
-  X,
-} from "lucide-react";
+import { Sun, Moon, ArrowDown, Download } from "lucide-react";
 
-const sectionIds = [
-  "home",
-  "about",
-  "education",
-  "experience",
-  "certifications",
-  "projects",
-  "contact",
-] as const;
+const scrollToId = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-const sectionIcons = {
-  home: Home,
-  about: User,
-  education: GraduationCap,
-  experience: Briefcase,
-  certifications: Award,
-  projects: FolderGit2,
-  contact: Mail,
-};
-
+/** Sticky top bar inside the page column: links, logo, language, theme, Contact. */
 export function Navigation() {
-  const [activeSection, setActiveSection] = useState("home");
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const { locale, t, toggleLocale } = useLocale();
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
+  const { locale, t, toggleLocale } = useLocale();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: "-40% 0px -55% 0px" },
-    );
+  const isDark = mounted && resolvedTheme === "dark";
 
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMobileOpen(false);
-  };
-
-  const cycleTheme = () => {
-    if (theme === "system") setTheme("light");
-    else if (theme === "light") setTheme("dark");
-    else setTheme("system");
-  };
-
-  const themeIcon = mounted ? (
-    theme === "light" ? (
-      <Sun className="h-4 w-4" />
-    ) : theme === "dark" ? (
-      <Moon className="h-4 w-4" />
-    ) : (
-      <Monitor className="h-4 w-4" />
-    )
-  ) : (
-    <Monitor className="h-4 w-4" />
-  );
-
-  const themeLabel = mounted
-    ? theme === "system"
-      ? locale === "pt"
-        ? "Sistema"
-        : "System"
-      : theme === "light"
-        ? locale === "pt"
-          ? "Claro"
-          : "Light"
-        : locale === "pt"
-          ? "Escuro"
-          : "Dark"
-    : "";
-
-  const navLabels: Record<(typeof sectionIds)[number], string> = {
-    home: t.nav.home,
-    about: t.nav.about,
-    education: t.nav.education,
-    experience: t.nav.experience,
-    certifications: t.nav.certifications,
-    projects: t.nav.projects,
-    contact: t.nav.contact,
-  };
+  const link =
+    "text-sm text-muted-foreground underline decoration-border decoration-dotted underline-offset-[6px] transition-colors hover:text-foreground hover:decoration-foreground";
+  const round =
+    "flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:text-foreground";
 
   return (
-    <>
-      {/* Mobile top bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b border-border bg-background/90 px-4 py-3 backdrop-blur-md lg:hidden">
-        <span className="font-mono text-sm font-semibold tracking-wider text-primary">
-          {"</>"}
-        </span>
-        <div className="flex items-center gap-1">
-          <button
-            type="button"
-            onClick={cycleTheme}
-            className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Toggle theme"
-          >
-            {themeIcon}
+    <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
+      <div className="mx-auto grid h-16 max-w-[48rem] grid-cols-[1fr_auto_1fr] items-center border-x border-border px-6 sm:px-8">
+        <nav className="flex items-center gap-5" aria-label="Sections">
+          <button type="button" className={`${link} hidden sm:block`} onClick={() => scrollToId("journey")}>
+            {t.ui.journey}
           </button>
+          <button type="button" className={link} onClick={() => scrollToId("projects")}>
+            {t.nav.projects}
+          </button>
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex h-9 w-9 items-center justify-center"
+          aria-label={t.nav.home}
+        >
+          <PixelMark />
+        </button>
+
+        <div className="flex items-center justify-end gap-2">
           <button
             type="button"
             onClick={toggleLocale}
-            className="flex items-center gap-1 rounded-md px-2 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Toggle language"
+            className={round}
+            aria-label={locale === "en" ? "Português" : "English"}
+            title={locale === "en" ? "Português" : "English"}
           >
-            <Globe className="h-3.5 w-3.5" />
-            {locale === "en" ? "EN" : "PT"}
+            {locale === "en" ? <FlagBR /> : <FlagUS />}
           </button>
           <button
             type="button"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="rounded-md p-2 text-muted-foreground transition-colors hover:text-foreground"
-            aria-label="Toggle menu"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            className={round}
+            aria-label="Toggle theme"
           >
-            {mobileOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Menu className="h-5 w-5" />
-            )}
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          <a
+            href="/cv.pdf"
+            download="cv.pdf"
+            aria-label={t.contact.cv.title}
+            title={t.contact.cv.title}
+            className="group inline-flex h-9 items-center gap-1.5 rounded-full border border-border bg-card px-3 font-mono text-[11px] text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+          >
+            <Download className="h-3.5 w-3.5 transition-transform group-hover:translate-y-0.5" />
+            <span className="hidden sm:inline">{t.contact.cv.short}</span>
+          </a>
+          <button
+            type="button"
+            onClick={() => scrollToId("contact")}
+            className="contact-btn group relative inline-flex h-9 items-center gap-2 overflow-hidden rounded-full bg-foreground pl-4 pr-1 text-sm font-medium text-background transition-transform hover:scale-[1.04] active:scale-95"
+          >
+            <span className="relative z-10">{t.nav.contact}</span>
+            <span className="relative z-10 flex h-7 w-7 items-center justify-center rounded-full bg-background text-foreground transition-colors group-hover:bg-accent group-hover:text-background">
+              <ArrowDown className="arrow-nudge h-3.5 w-3.5" />
+            </span>
           </button>
         </div>
-      </header>
-
-      {/* Mobile drawer overlay */}
-      {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-background/95 pt-16 backdrop-blur-md lg:hidden">
-          <nav className="flex flex-col items-center gap-1 p-6">
-            {sectionIds.map((id) => {
-              const Icon = sectionIcons[id];
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => scrollTo(id)}
-                  className={`flex w-full max-w-xs items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
-                    activeSection === id
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }`}
-                >
-                  <Icon className="h-4 w-4 shrink-0" />
-                  {navLabels[id]}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
-      )}
-
-      {/* Desktop sidebar */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-screen w-56 flex-col border-r border-border bg-background lg:flex">
-        {/* Logo */}
-        <div className="px-6 pt-8 pb-6">
-          <span className="font-mono text-lg font-bold tracking-wider text-primary">
-            {"</>"}
-          </span>
-        </div>
-
-        {/* Nav links */}
-        <nav className="flex flex-1 flex-col gap-0.5 px-3">
-          {sectionIds.map((id) => {
-            const Icon = sectionIcons[id];
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => scrollTo(id)}
-                className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all ${
-                  activeSection === id
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }`}
-              >
-                <Icon className="h-4 w-4 shrink-0" />
-                {navLabels[id]}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* Footer controls */}
-        <div className="border-t border-border px-4 py-4">
-          <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={cycleTheme}
-              className="flex items-center gap-2 rounded-md px-2 py-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              aria-label="Toggle theme"
-            >
-              {themeIcon}
-              <span className="text-xs">{themeLabel}</span>
-            </button>
-            <button
-              type="button"
-              onClick={toggleLocale}
-              className="flex items-center gap-1.5 rounded-md px-2 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              aria-label="Toggle language"
-            >
-              <Globe className="h-3.5 w-3.5" />
-              {locale === "en" ? "PT" : "EN"}
-            </button>
-          </div>
-        </div>
-      </aside>
-    </>
+      </div>
+    </header>
   );
 }

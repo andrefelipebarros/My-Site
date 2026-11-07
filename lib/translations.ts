@@ -5,6 +5,15 @@ export type Locale = "pt" | "en";
 
 export const translations = {
   en: {
+    ui: {
+      base: "BASE",
+      location: "Rio de Janeiro, BR",
+      localTime: "LOCAL TIME",
+      journey: "Journey",
+      experienceLabel: "EXPERIENCE",
+      educationLabel: "EDUCATION",
+      skillsLabel: "SKILLS",
+    },
     nav: {
       home: "Home",
       about: "About",
@@ -15,7 +24,22 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      label: "SOFTWARE ENGINEER",
+      label: "FULL STACK DEVELOPER",
+      status: "Open to opportunities",
+      terminal: {
+        title: "andre@localhost~",
+        os: "Andre OS [Version 1.0]",
+        copyright: "(c) Andre Felipe de Barros A. N. All rights reserved.",
+        command: "andre --info",
+        intro: "Scalable web apps, automation and API integrations.",
+        lines: [
+          "Backend in Java, Spring Boot and Quarkus",
+          "Frontend in Angular and TypeScript",
+          "Cloud and DevOps with AWS, Docker and CI/CD",
+          "Automation in Python and SAP scripting",
+          "2+ years building systems at BNDES",
+        ],
+      },
       subtitle: "Full Stack Developer",
       description:
         "Building scalable web applications, automating processes, and integrating APIs. Passionate about transforming requirements into high-performance, secure solutions.",
@@ -24,9 +48,7 @@ export const translations = {
     },
     about: {
       title: "About Me",
-      p1: "Full Stack Developer with 2+ years of experience at one of Brazil's largest development banks (BNDES). I hold a Bachelor's degree in Computer Science from Universidade Veiga de Almeida and am currently pursuing a Postgraduate degree in Software Engineering at PUC-Rio.",
-      p2: "I specialize in building scalable enterprise applications using Java/Spring Boot on the backend and Angular on the frontend. I have hands-on experience with cloud infrastructure (AWS, Azure), containerization (Docker), and CI/CD pipelines.",
-      p3: "I'm driven by clean architecture, test-driven development, and collaborative agile workflows. I enjoy tackling complex problems and continuously learning new technologies.",
+      p1: "I began at 13, making Minecraft mods in Java on my phone, before I even had a PC. That is where I first studied programming logic, though it was never my focus. When I started my Computer Science degree in 2022, programming became my path. Today I am a software engineer.",
       techTitle: "Tech Stack",
       categories: {
         backend: "Backend",
@@ -42,6 +64,7 @@ export const translations = {
       postgrad: {
         degree: "Postgraduate in Software Engineering",
         school: "PUC-Rio",
+        location: "Rio de Janeiro, BR",
         period: "2026 - Present",
         status: "In Progress",
         description:
@@ -50,74 +73,118 @@ export const translations = {
       bachelor: {
         degree: "Bachelor in Computer Science",
         school: "Universidade Veiga de Almeida",
+        location: "Rio de Janeiro, BR",
         period: "2022 - 2025",
         status: "Completed",
         description:
           "Comprehensive foundation in algorithms, data structures, databases, software engineering, and computer networks.",
+      },
+      monitor: {
+        role: "Teaching Assistant (Monitor), Web Applications Development",
+        school: "Universidade Veiga de Almeida",
+        period: "Mar 2022 - Apr 2022 · 2 months",
+        tags: ["Web Development", "APIs", "UX/UI", "Teaching", "33h"],
       },
     },
     experience: {
       title: "Experience",
       jobs: [
         {
-          title: "Systems Analysis Intern",
+          title: "Full Stack Development Intern",
+          type: "",
+          mode: "Hybrid",
+          location: "Rio de Janeiro, BR",
+          duration: "2 yrs",
           company: "BNDES",
           period: "Feb 2024 - Feb 2026",
           description: [
-            "Creation, maintenance, and migration of responsive web applications using Java (Spring-Boot, JPA, JDBC, JUnit5, Swagger, Liberty, Maven) and Angular, focused on the financial environment.",
-            "Continuous integration with Jenkins and Sonar, and code versioning using Git and GitLab.",
-            "Development and maintenance of database structures, including tables, views, and procedures, ensuring system integrity and performance.",
-            "Development of RPAs using Python and SAP Script for process automation in an SAP environment, as well as supporting Power BI dashboard creation.",
-            "Incident resolution and ticket management via Remedy, working in SAP NetWeaver / SAP ERP environments.",
+            "Built, maintained and migrated web applications for the financial sector with Java (Spring Boot, Java EE, JPA, JDBC, Swagger, Maven) and Angular.",
+            "Back-end in Java EE and Open Liberty for sensitive data processing, plus Oracle structures (tables, views and procedures).",
+            "Testing with JUnit 5, continuous integration with Jenkins, Sonar and Rundeck, and versioning with Git and GitLab, in agile teams (Scrum and Kanban).",
+            "Java microservices integrating with IBM ClearQuest.",
+            "Internal pair project: payslip lookup system built with Spring Boot, Liberty and Thymeleaf.",
+            "Java application consuming the internal SAP API to change roles and role groups, plus SAP support, RPA automation and data handling for audit responses.",
           ],
           skills: [
             "Java",
             "Spring Boot",
-            "JUnit 5",
+            "Java EE",
+            "Open Liberty",
+            "JPA",
+            "JDBC",
             "Angular",
-            "Python",
-            "SAP",
-            "SAP NetWeaver",
             "Oracle",
+            "Microservices",
+            "Swagger",
+            "Maven",
+            "JUnit 5",
             "Jenkins",
-            "Gitlab",
-            "Excel",
-            "Power BI"
-          ],
-        },
-        {
-          title: "Freelance Web Developer",
-          company: "GHCi.io",
-          period: "Jul 2023",
-          description: [
-            "Development and maintenance of responsive web applications, ensuring the best user experience.",
-            "Collaboration with international clients to create personalized and efficient digital solutions.",
-            "Implementation of dynamic interfaces using Bootstrap, HTML, CSS, and JavaScript.",
-          ],
-          skills: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Bootstrap",
-            "UI Design",
+            "SonarQube",
+            "Rundeck",
             "Git",
+            "GitLab",
+            "Scrum",
+            "Kanban",
+            "Thymeleaf",
+            "SAP",
+            "RPA",
+            "IBM ClearQuest",
+            "Python",
+            "Node.js",
           ],
         },
         {
           title: "Junior Systems Analyst",
+          type: "",
+          mode: "",
+          location: "Rio de Janeiro, BR",
+          duration: "3 months",
           company: "BOATLUX",
           period: "Mar 2023 - May 2023",
-          description: [
-            "Development of Python scripts using Pandas and Openpyxl libraries to automate daily data extraction and processing.",
-            "Responsible for updating and optimizing Power BI dashboards, performing maintenance on DAX measures, and adjusting visualizations for KPIs.",
-            "Support for the software development cycle by resolving bugs reported in staging and production environments, using Git and Clean Code.",
+          description: [],
+          skills: ["PostgreSQL", "Python", "Dashboards", "Excel", "Flutter", "Django"],
+        },
+      ],
+    },
+    volunteer: {
+      label: "VOLUNTEERING",
+      items: [
+        {
+          org: "Universidade Veiga de Almeida",
+          role: "Teaching Assistant (Monitor)",
+          period: "Mar 2022 - Apr 2022 · 2 months",
+          area: "Science and technology",
+          hours: "33h",
+          bullets: [
+            "Helped students with web development concepts.",
+            "Supported students in solving code problems.",
           ],
-          skills: ["PostgreSQL", "Python", "Pandas", "Power BI", "DAX", "Git", "Clean Code", "Flutter"],
+          proof: "Certificate: Web Applications Development course, Tijuca campus",
+        },
+      ],
+    },
+    highlights: {
+      title: "Highlights",
+      // Titles, texts and techs come from the projects list (lib/projects-data.ts).
+      items: [
+        { label: "Own product", project: "Sábio Diário" },
+        { label: "Backend API", project: "techflow-api" },
+      ],
+    },
+    awards: {
+      title: "Awards",
+      items: [
+        {
+          name: "Academic Merit Award",
+          issuer: "Universidade Veiga de Almeida · 2025",
+          description:
+            "Granted by Universidade Veiga de Almeida for outstanding academic performance and dedication throughout the Computer Science degree (2022-2025). It also recognized leadership in Scientific Initiation projects and work on social causes through technology.",
         },
       ],
     },
     certifications: {
       title: "Certifications",
+      inProgress: "In progress",
       items: certificationItems.en,
     },
     projects: {
@@ -134,10 +201,20 @@ export const translations = {
       email: "Email",
       linkedin: "LinkedIn",
       github: "GitHub",
+      cv: { title: "Download my CV", file: "PDF · 2 pages", short: "CV" },
       footer: "Designed & Built by Andre Felipe",
     },
   },
   pt: {
+    ui: {
+      base: "BASE",
+      location: "Rio de Janeiro, BR",
+      localTime: "HORA LOCAL",
+      journey: "Trajetória",
+      experienceLabel: "EXPERIÊNCIA",
+      educationLabel: "FORMAÇÃO",
+      skillsLabel: "HABILIDADES",
+    },
     nav: {
       home: "Início",
       about: "Sobre",
@@ -148,7 +225,22 @@ export const translations = {
       contact: "Contato",
     },
     hero: {
-      label: "ENGENHEIRO DE SOFTWARE",
+      label: "DESENVOLVEDOR FULL STACK",
+      status: "Aberto a oportunidades",
+      terminal: {
+        title: "andre@localhost~",
+        os: "Andre OS [Version 1.0]",
+        copyright: "(c) Andre Felipe de Barros A. N. Todos os direitos reservados.",
+        command: "andre --info",
+        intro: "Aplicações web escaláveis, automação e integração de APIs.",
+        lines: [
+          "Backend em Java, Spring Boot e Quarkus",
+          "Frontend em Angular e TypeScript",
+          "Cloud e DevOps com AWS, Docker e CI/CD",
+          "Automação em Python e scripts SAP",
+          "2+ anos construindo sistemas no BNDES",
+        ],
+      },
       subtitle: "Desenvolvedor Full Stack",
       description:
         "Construindo aplicações web escaláveis, automatizando processos e integrando APIs. Apaixonado por transformar requisitos em soluções de alta performance e seguras.",
@@ -157,9 +249,7 @@ export const translations = {
     },
     about: {
       title: "Sobre Mim",
-      p1: "Desenvolvedor Full Stack com mais de 2 anos de experiência em um dos maiores bancos de desenvolvimento do Brasil (BNDES). Possuo graduação em Ciência da Computação pela Universidade Veiga de Almeida e atualmente curso pós-graduação em Engenharia de Software na PUC-Rio.",
-      p2: "Especializado na construção de aplicações empresariais escaláveis usando Java/Spring Boot no backend e Angular no frontend. Possuo experiência prática com infraestrutura em nuvem (AWS, Azure), containerização (Docker) e pipelines CI/CD.",
-      p3: "Sou motivado por arquitetura limpa, desenvolvimento orientado a testes e fluxos de trabalho ágeis colaborativos. Gosto de resolver problemas complexos e aprender continuamente novas tecnologias.",
+      p1: "Comecei aos 13 anos fazendo mods de Minecraft em Java pelo celular, quando ainda não tinha PC. Foi ali que estudei lógica de programação pela primeira vez, mas ainda sem foco. Ao entrar na faculdade de Ciência da Computação, em 2022, a programação virou o meu caminho. Hoje sou engenheiro de software.",
       techTitle: "Stack Tecnológica",
       categories: {
         backend: "Backend",
@@ -175,6 +265,7 @@ export const translations = {
       postgrad: {
         degree: "Pós-graduação em Engenharia de Software",
         school: "PUC-Rio",
+        location: "Rio de Janeiro, BR",
         period: "2026 - Presente",
         status: "Em Andamento",
         description:
@@ -183,71 +274,118 @@ export const translations = {
       bachelor: {
         degree: "Bacharelado em Ciência da Computação",
         school: "Universidade Veiga de Almeida",
+        location: "Rio de Janeiro, BR",
         period: "2022 - 2025",
         status: "Concluído",
         description:
           "Base abrangente em algoritmos, estruturas de dados, bancos de dados, engenharia de software e redes de computadores.",
+      },
+      monitor: {
+        role: "Monitor, Desenvolvimento de Aplicações para a Web",
+        school: "Universidade Veiga de Almeida",
+        period: "Mar 2022 - Abr 2022 · 2 meses",
+        tags: ["Desenvolvimento Web", "APIs", "UX/UI", "Ensino", "33h"],
       },
     },
     experience: {
       title: "Experiência",
       jobs: [
         {
-          title: "Estagiário de Análise de Sistemas",
+          title: "Estagiário de Desenvolvimento Full Stack",
+          type: "",
+          mode: "Híbrido",
+          location: "Rio de Janeiro, BR",
+          duration: "2 anos",
           company: "BNDES",
           period: "Fev 2024 - Fev 2026",
           description: [
-            "Criação, manutenção e migração de aplicações web responsivas, utilizando Java (Spring-Boot, JPA, JDBC, JUnit5, Swagger, Liberty, Maven) e Angular, voltado para o ambiente financeiro.",
-            "Integração contínua com Jenkins e Sonar e versionamento de código com uso de Git e Gitlab.",
-            "Desenvolvimento e manutenção de estruturas de banco de dados, incluindo tabelas, views e procedures, garantindo integridade e desempenho do sistema.",
-            "Desenvolvimento de RPAs utilizando Python e SAP Script para automação de processos em ambiente SAP, além de apoio na criação de dashboards no Power BI.",
-            "Resolução de incidentes e gestão de chamados via Remedy, com atuação em ambientes SAP NetWeaver / SAP ERP.",
+            "Criação, manutenção e migração de aplicações web para o setor financeiro com Java (Spring Boot, Java EE, JPA, JDBC, Swagger, Maven) e Angular.",
+            "Back-end em Java EE e Open Liberty para processamento de dados sensíveis, além de estruturas no Oracle (tabelas, views e procedures).",
+            "Testes com JUnit 5, integração contínua com Jenkins, Sonar e Rundeck e versionamento com Git e GitLab, em times ágeis (Scrum e Kanban).",
+            "Microsserviços em Java para integração com o IBM ClearQuest.",
+            "Projeto interno em dupla: sistema de consulta de contracheques em Spring Boot, Liberty e Thymeleaf.",
+            "Aplicação em Java que consome a API interna do SAP para alterar roles e grupos de papéis, além de suporte ao ambiente SAP, automação via RPA e tratamento de dados para auditorias.",
           ],
           skills: [
             "Java",
             "Spring Boot",
+            "Java EE",
+            "Open Liberty",
+            "JPA",
+            "JDBC",
             "Angular",
-            "Python",
-            "SAP",
             "Oracle",
+            "Microsserviços",
+            "Swagger",
+            "Maven",
+            "JUnit 5",
             "Jenkins",
+            "SonarQube",
+            "Rundeck",
             "Git",
-            "Power BI"
-          ],
-        },
-        {
-          title: "Desenvolvedor Web Freelancer",
-          company: "GHCi.io",
-          period: "Jul 2023",
-          description: [
-            "Desenvolvimento e manutenção de aplicações web responsivas, garantindo a melhor experiência para o usuário.",
-            "Colaboração com clientes internacionais para criar soluções digitais personalizadas e eficientes.",
-            "Implementação de interfaces dinâmicas utilizando Bootstrap, HTML, CSS e JavaScript.",
-          ],
-          skills: [
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Bootstrap",
-            "UI Design",
-            "Git",
+            "GitLab",
+            "Scrum",
+            "Kanban",
+            "Thymeleaf",
+            "SAP",
+            "RPA",
+            "IBM ClearQuest",
+            "Python",
+            "Node.js",
           ],
         },
         {
           title: "Analista de Sistemas Júnior",
+          type: "",
+          mode: "",
+          location: "Rio de Janeiro, BR",
+          duration: "3 meses",
           company: "BOATLUX",
           period: "Mar 2023 - Mai 2023",
-          description: [
-            "Desenvolvimento de scripts em Python utilizando as bibliotecas Pandas e Openpyxl para automatizar a extração e tratamento de dados diários.",
-            "Responsável pela atualização e otimização de dashboards no Power BI, realizando a manutenção de medidas em DAX e ajustando visualizações para KPIs.",
-            "Suporte ao ciclo de desenvolvimento de software através da resolução de bugs reportados em ambiente de homologação e produção, utilizando Git e Clean Code.",
+          description: [],
+          skills: ["PostgreSQL", "Python", "Dashboards", "Excel", "Flutter", "Django"],
+        },
+      ],
+    },
+    volunteer: {
+      label: "VOLUNTARIADO",
+      items: [
+        {
+          org: "Universidade Veiga de Almeida",
+          role: "Monitor",
+          period: "Mar 2022 - Abr 2022 · 2 meses",
+          area: "Ciência e tecnologia",
+          hours: "33h",
+          bullets: [
+            "Auxílio a alunos em conceitos de desenvolvimento web.",
+            "Suporte na resolução de problemas de código.",
           ],
-          skills: ["Python", "Pandas", "Power BI", "DAX", "Git", "Clean Code"],
+          proof: "Certificado: disciplina Desenvolvimento de Aplicações para a Web, campus Tijuca",
+        },
+      ],
+    },
+    highlights: {
+      title: "Destaques",
+      // Titles, texts and techs come from the projects list (lib/projects-data.ts).
+      items: [
+        { label: "Produto próprio", project: "Sábio Diário" },
+        { label: "API backend", project: "techflow-api" },
+      ],
+    },
+    awards: {
+      title: "Prêmios",
+      items: [
+        {
+          name: "Honra ao Mérito Acadêmico",
+          issuer: "Universidade Veiga de Almeida · 2025",
+          description:
+            "Concedida pela Universidade Veiga de Almeida em reconhecimento ao desempenho acadêmico de destaque e dedicação ao longo da graduação em Ciência da Computação (2022-2025). Destacou também a liderança em projetos de Iniciação Científica e a atuação em causas sociais através da tecnologia.",
         },
       ],
     },
     certifications: {
       title: "Certificações",
+      inProgress: "Em andamento",
       items: certificationItems.pt,
     },
     projects: {
@@ -264,6 +402,7 @@ export const translations = {
       email: "E-mail",
       linkedin: "LinkedIn",
       github: "GitHub",
+      cv: { title: "Baixar meu currículo", file: "PDF · 2 páginas", short: "CV" },
       footer: "Projetado e Construído por Andre Felipe",
     },
   },

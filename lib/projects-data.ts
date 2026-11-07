@@ -16,8 +16,8 @@ export const projects = [
     demo: "https://andrefelipebarros.com/sabiodiario",
     techs: ["Java 21", "Quarkus", "PostgreSQL", "Stripe", "AWS Lambda", "Terraform"],
     description: {
-      en: "Micro-SaaS in production that emails a daily reflection. Quarkus backend with Stripe subscriptions and webhooks, plus an AWS Lambda and SES automation managed with Terraform.",
-      pt: "Micro-SaaS em produção que envia uma reflexão diária por e-mail. Backend em Quarkus com assinaturas e webhooks do Stripe, mais uma automação com AWS Lambda e SES gerenciada com Terraform.",
+      en: "Micro-SaaS in production that emails a daily reflection. Quarkus backend with Stripe subscriptions and webhooks, running on AWS with Lambda and SES automation managed with Terraform.",
+      pt: "Micro-SaaS em produção que envia uma reflexão diária por e-mail. Backend em Quarkus com assinaturas e webhooks do Stripe, rodando na AWS com automação em Lambda e SES gerenciada com Terraform.",
     },
   },
   {
