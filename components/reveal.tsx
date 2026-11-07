@@ -74,12 +74,20 @@ export function Reveal({
   );
 }
 
-/** Section heading whose accent bar draws itself when it scrolls into view. */
-export function SectionTitle({ children }: { children: ReactNode }) {
+/** Serif section heading, with an optional right-side slot. */
+export function SectionTitle({
+  children,
+  right,
+}: {
+  children: ReactNode;
+  right?: ReactNode;
+}) {
   return (
-    <Reveal>
-      <h2 className="text-3xl font-bold text-foreground">{children}</h2>
-      <div className="mt-2 h-1 w-16 origin-left scale-x-0 rounded-full bg-accent transition-transform delay-300 duration-700 ease-out group-data-[revealed=true]/reveal:scale-x-100" />
+    <Reveal className="flex items-baseline justify-between gap-4">
+      <h2 className="font-serif text-3xl leading-tight sm:text-4xl tracking-tight text-foreground">
+        {children}
+      </h2>
+      {right}
     </Reveal>
   );
 }

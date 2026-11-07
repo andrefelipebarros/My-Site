@@ -1,24 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { useLocale } from "@/lib/locale-context";
-import { CloudSun, Code2, ExternalLink, FolderGit2, Webhook } from "lucide-react";
+import { CloudSun, Code2, ExternalLink, Webhook } from "lucide-react";
 import { techIcons } from "@/lib/tech-icons";
-import { SectionTitle } from "@/components/reveal";
+import { Reveal, SectionTitle } from "@/components/reveal";
+import { Column } from "@/components/column";
 
-/** Scrolling (in viewport heights) needed to move the track by one card. */
-const VH_PER_STEP = 45;
-/** Gap between cards in px (matches gap-6). */
-const GAP = 24;
-
-const clamp = (v: number, min = 0, max = 1) => Math.min(max, Math.max(min, v));
-
-/** Holds each card for a moment, then eases to the next one. */
-function withDwell(pos: number) {
-  const i = Math.floor(pos);
-  const t = clamp((pos - i - 0.15) / 0.7);
-  return i + t * t * (3 - 2 * t);
-}
+/** Only the projects that matter most for backend-focused full stack roles, in this order. */
+const FEATURED = [
+  "store-api",
+  "agenda-cultural-eventos-api",
+  "Vava-API",
+  "Little-Lemon-API",
+];
 
 const fallbackIcons: Record<string, typeof Code2> = {
   "REST API": Webhook,
@@ -26,23 +20,29 @@ const fallbackIcons: Record<string, typeof Code2> = {
   "Open-Meteo": CloudSun,
 };
 
-function TechLogo({ name }: { name: string }) {
+export function TechLogo({
+  name,
+  className = "h-7 w-7",
+}: {
+  name: string;
+  className?: string;
+}) {
   const icon = techIcons[name];
 
   if (!icon) {
     const Fallback = fallbackIcons[name] ?? Code2;
-    return <Fallback className="h-7 w-7 text-accent" strokeWidth={1.5} />;
+    return <Fallback className={`${className} text-accent`} strokeWidth={1.5} />;
   }
 
   if (icon.img) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={icon.src} alt="" className="h-7 w-7" />;
+    return <img src={icon.src} alt="" className={className} />;
   }
 
   return (
     <span
       aria-hidden
-      className="block h-7 w-7"
+      className={`block shrink-0 ${className}`}
       style={{
         backgroundColor: icon.color ?? "currentColor",
         WebkitMaskImage: `url(${icon.src})`,
@@ -69,288 +69,107 @@ function uniqueTechs(techs: readonly string[]) {
   });
 }
 
-type Project = ReturnType<typeof useLocale>["t"]["projects"]["items"][number];
-
-/** Everything inside a project card (shared by the desktop and phone carousels). */
-function ProjectCardBody({ project }: { project: Project }) {
-  const { t } = useLocale();
-
-  return (
-    <>
-      <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
-            <FolderGit2 className="h-5 w-5 text-accent" />
-          </div>
-          {project.tag && (
-            <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-xs text-muted-foreground">
-              {project.tag}
-            </span>
-          )}
-        </div>
-        <a
-          href={project.url || project.demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-muted-foreground transition-colors hover:text-accent"
-          aria-label={`${project.url ? t.projects.viewCode : t.projects.viewSite} - ${project.name}`}
-        >
-          <ExternalLink className="h-4 w-4" />
-        </a>
-      </div>
-
-      <h3 className="text-lg font-semibold text-card-foreground">
-        {project.name}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {project.description}
-      </p>
-
-      <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-        {t.projects.techLabel}
-      </p>
-      <div className="mt-3 grid grid-cols-4 gap-x-2 gap-y-3 text-card-foreground sm:grid-cols-6">
-        {uniqueTechs(project.techs).map((tech) => (
-          <div
-            key={tech}
-            className="flex flex-col items-center gap-1.5 text-center"
-          >
-            <TechLogo name={tech} />
-            <span className="text-[11px] font-medium leading-tight">
-              {techIcons[tech]?.label ?? tech}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-4">
-        {project.url && (
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-          >
-            {t.projects.viewCode}
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        )}
-        {project.demo && (
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-accent/80"
-          >
-            {t.projects.viewSite}
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        )}
-      </div>
-    </>
-  );
-}
-
-/** Phone carousel: swipe sideways, cards snap into place. */
-function ProjectsSwipe() {
-  const { t } = useLocale();
-  const items = t.projects.items;
-  const count = items.length;
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(0);
-
-  const cardStep = () => {
-    const first = trackRef.current?.firstElementChild as HTMLElement | null;
-    return first ? first.offsetWidth + 16 : 1;
-  };
-
-  const onScroll = () => {
-    const el = trackRef.current;
-    if (!el) return;
-    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
-    setActive(
-      atEnd ? count - 1 : clamp(Math.round(el.scrollLeft / cardStep()), 0, count - 1),
-    );
-  };
-
-  const goTo = (i: number) =>
-    trackRef.current?.scrollTo({ left: i * cardStep(), behavior: "smooth" });
-
-  return (
-    <div className="carousel-mobile pb-16 pt-24">
-      <div className="px-6">
-        <SectionTitle>{t.projects.title}</SectionTitle>
-      </div>
-
-      <div
-        ref={trackRef}
-        onScroll={onScroll}
-        className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      >
-        {items.map((project, i) => (
-          <article
-            key={project.name}
-            className={`flex w-[82vw] max-w-sm shrink-0 snap-start flex-col rounded-xl border bg-card p-5 ${
-              i === active ? "border-primary/40" : "border-border"
-            }`}
-          >
-            <ProjectCardBody project={project} />
-          </article>
-        ))}
-      </div>
-
-      <div className="mt-4 flex items-center gap-2 px-6">
-        {items.map((project, i) => (
-          <button
-            key={project.name}
-            type="button"
-            onClick={() => goTo(i)}
-            aria-label={project.name}
-            aria-current={i === active}
-            className="py-2"
-          >
-            <span
-              className={`block h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? "w-8 bg-accent" : "w-4 bg-border"
-              }`}
-            />
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function Projects() {
   const { t } = useLocale();
-  const items = t.projects.items;
-  const count = items.length;
-
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-  const firstCardRef = useRef<HTMLElement>(null);
-
-  // step: distance between two cards; maxShift: how far the track can move
-  // before the last card touches the right edge (no empty space on the right).
-  const [metrics, setMetrics] = useState({ step: 1, maxShift: 0 });
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const measure = () => {
-      const stage = stageRef.current;
-      const card = firstCardRef.current;
-      if (!stage || !card || stage.clientWidth === 0) return;
-      const step = card.offsetWidth + GAP;
-      const pad = card.offsetLeft;
-      const contentWidth = pad * 2 + count * step - GAP;
-      setMetrics({
-        step,
-        maxShift: Math.max(0, contentWidth - stage.clientWidth),
-      });
-    };
-
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, [count, items]);
-
-  const steps = Math.ceil(metrics.maxShift / metrics.step);
-
-  useEffect(() => {
-    let frame = 0;
-
-    const update = () => {
-      frame = 0;
-      const el = wrapperRef.current;
-      if (!el) return;
-      const total = el.offsetHeight - window.innerHeight;
-      if (total <= 0) return;
-      setProgress(clamp(-el.getBoundingClientRect().top / total));
-    };
-
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [steps]);
-
-  const shift = Math.min(
-    withDwell(progress * steps) * metrics.step,
-    metrics.maxShift,
-  );
-  const pos = shift / metrics.step; // how many cards have moved past the start
+  const items = FEATURED.map((name) =>
+    t.projects.items.find((p) => p.name === name),
+  ).filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
-    <section id="projects">
-      <ProjectsSwipe />
-
-      <div
-        ref={wrapperRef}
-        style={{ height: `calc(100svh + ${steps * VH_PER_STEP}svh)` }}
-        className="carousel-desktop relative"
-      >
-      <div
-        ref={stageRef}
-        className="sticky top-0 flex h-svh flex-col justify-center gap-8 overflow-hidden pt-14 lg:pt-0"
-        style={
-          {
-            "--card-w": "min(28rem, 78vw)",
-            "--step": "calc(var(--card-w) + 1.5rem)",
-          } as React.CSSProperties
-        }
-      >
-        <div className="px-6 lg:px-16">
-          <h2 className="text-3xl font-bold text-foreground">
-            {t.projects.title}
-          </h2>
-          <div className="mt-2 h-1 w-16 rounded-full bg-accent" />
+    <section id="projects" className="scroll-mt-16">
+      <Column>
+        <div className="px-6 pb-6 pt-12 sm:px-8">
+          <SectionTitle>{t.projects.title}</SectionTitle>
         </div>
 
-        <div className="relative h-[32rem] sm:h-[24rem]">
+        <div className="grid border-t border-border sm:grid-cols-2">
           {items.map((project, i) => {
-            const d = i - pos; // 0 = at the start position, negative = left of it
-            const leaving = clamp(-d);
-            const isLead = d > -0.5 && d <= 0.5;
-
+            const techs = uniqueTechs(project.techs);
+            const cover = techs[0];
             return (
-              <article
+              <Reveal
                 key={project.name}
-                ref={i === 0 ? firstCardRef : undefined}
-                className={`absolute left-6 top-0 flex h-full w-[var(--card-w)] flex-col rounded-xl border bg-card p-6 will-change-transform lg:left-16 ${
-                  isLead ? "border-primary/40" : "border-border"
-                }`}
-                style={{
-                  transform: `translateX(calc(var(--step) * ${i} - ${shift}px))`,
-                  opacity: 1 - leaving * 0.9,
-                }}
+                delay={(i % 2) * 120}
+                className="border-b border-border sm:odd:border-r"
               >
-                <ProjectCardBody project={project} />
-              </article>
+                <article className="group flex h-full flex-col">
+                  {/* Cover area: big logos over a dotted panel */}
+                  <div className="vitrine flex h-44 items-center justify-center gap-5 border-b border-border">
+                    <span className="absolute left-4 top-3 font-mono text-xs text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {project.tag && (
+                      <span className="absolute right-4 top-3 rounded-sm border border-border bg-card px-2 py-0.5 font-mono text-[11px] text-muted-foreground">
+                        {project.tag}
+                      </span>
+                    )}
+                    {techs.slice(0, 3).map((tech, k) => (
+                      <div
+                        key={tech}
+                        className={`relative transition-transform duration-500 group-hover:scale-110 ${
+                          k === 0 ? "" : "opacity-70"
+                        }`}
+                      >
+                        <TechLogo
+                          name={tech}
+                          className={k === 0 ? "h-16 w-16" : "h-9 w-9"}
+                        />
+                      </div>
+                    ))}
+                    {!cover && null}
+                  </div>
+
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="font-serif text-xl leading-tight text-card-foreground">
+                      {project.name}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {project.description}
+                    </p>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {techs.map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center gap-1.5 rounded-sm border border-border bg-muted/60 px-2 py-1 font-mono text-[11px] text-foreground/85"
+                        >
+                          <TechLogo name={tech} className="h-3 w-3" />
+                          {techIcons[tech]?.label ?? tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-1 pt-5">
+                      {project.url && (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent underline decoration-dotted underline-offset-4 transition-opacity hover:opacity-70"
+                        >
+                          {t.projects.viewCode}
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                      {project.demo && (
+                        <a
+                          href={project.demo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-accent underline decoration-dotted underline-offset-4 transition-opacity hover:opacity-70"
+                        >
+                          {t.projects.viewSite}
+                          <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </Reveal>
             );
           })}
         </div>
-
-        {/* Progress bar */}
-        {metrics.maxShift > 0 && (
-          <div className="px-6 lg:px-16" aria-hidden>
-            <div className="h-1 w-32 overflow-hidden rounded-full bg-border">
-              <div
-                className="h-full rounded-full bg-accent"
-                style={{ width: `${(shift / metrics.maxShift) * 100}%` }}
-              />
-            </div>
-          </div>
-        )}
-      </div>
-      </div>
+      </Column>
     </section>
   );
 }

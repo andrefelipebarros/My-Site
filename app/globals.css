@@ -2,97 +2,217 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  /* Projects carousel: scroll-driven on big screens, swipe on phones.
-     Short landscape phones also get the swipe version. */
-  .carousel-desktop {
-    display: none;
-  }
-  @media (min-width: 768px) and (min-height: 640px) {
-    .carousel-desktop {
-      display: block;
-    }
-    .carousel-mobile {
-      display: none;
-    }
-  }
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Diagonal hatch band that separates the sections */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      135deg,
+      hsl(var(--border)) 0,
+      hsl(var(--border)) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+  }
+
+  /* Dotted panel, fading in from the left */
+  .vitrine {
+    position: relative;
+    overflow: hidden;
+    background-color: hsl(var(--background));
+  }
+  .vitrine::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--muted-foreground) / 0.45) 1px,
+      transparent 1.6px
+    );
+    background-size: 1.25rem 1.25rem;
+    -webkit-mask-image: linear-gradient(to right, transparent 5%, #000 95%);
+    mask-image: linear-gradient(to right, transparent 5%, #000 95%);
+  }
+
+  /* Brighter dots that follow the pointer (--px/--py are set by <PointerFx />) */
+  .vitrine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background-image: radial-gradient(
+      circle,
+      hsl(var(--foreground) / 0.75) 1px,
+      transparent 1.6px
+    );
+    background-size: 1.25rem 1.25rem;
+    -webkit-mask-image: radial-gradient(
+      8rem circle at var(--px, 50%) var(--py, 50%),
+      #000,
+      transparent 70%
+    );
+    mask-image: radial-gradient(
+      8rem circle at var(--px, 50%) var(--py, 50%),
+      #000,
+      transparent 70%
+    );
+  }
+  .group:hover .vitrine::after,
+  .vitrine:hover::after {
+    opacity: 0.6;
+  }
+
+  .dot-pill {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.5) 1.3px,
+      transparent 1.8px
+    );
+    background-size: 8px 8px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 85%);
+    mask-image: linear-gradient(to bottom, transparent, #000 85%);
+    border-radius: 18px;
+    animation: pill-float 9s ease-in-out infinite;
+  }
+  .dot-pill.flip {
+    -webkit-mask-image: linear-gradient(to top, transparent, #000 85%);
+    mask-image: linear-gradient(to top, transparent, #000 85%);
+  }
+  @keyframes pill-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(18px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dot-pill { animation: none; }
+  }
+  .contact-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      hsl(var(--background) / 0.35) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    animation: shine 3.6s ease-in-out infinite;
+  }
+  .arrow-nudge {
+    animation: nudge 1.4s ease-in-out infinite;
+  }
+  @keyframes shine {
+    0%, 55% { transform: translateX(-120%); }
+    85%, 100% { transform: translateX(120%); }
+  }
+  @keyframes nudge {
+    0%, 100% { transform: translateY(-1.5px); }
+    50% { transform: translateY(2px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .contact-btn::before, .arrow-nudge { animation: none; }
+  }
+  .cursor-blink-pixel {
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  .cursor-blink {
+    display: inline-block;
+    width: 0.5em;
+    height: 1.05em;
+    vertical-align: text-bottom;
+    background: currentColor;
+    animation: blink 1.1s steps(1) infinite;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 
 @layer base {
   :root {
-    --background: 30 25% 96%;
-    --foreground: 20 25% 10%;
-    --card: 30 20% 93%;
-    --card-foreground: 20 25% 10%;
-    --popover: 30 25% 96%;
-    --popover-foreground: 20 25% 10%;
-    --primary: 25 55% 30%;
-    --primary-foreground: 30 30% 96%;
-    --secondary: 30 15% 88%;
-    --secondary-foreground: 20 20% 15%;
-    --muted: 30 12% 90%;
-    --muted-foreground: 20 10% 45%;
-    --accent: 28 65% 42%;
-    --accent-foreground: 30 30% 98%;
+    --background: 0 0% 96%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 93%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 30%;
+    --primary-foreground: 0 0% 96%;
+    --secondary: 0 0% 88%;
+    --secondary-foreground: 0 0% 15%;
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 28 15% 84%;
-    --input: 28 15% 84%;
-    --ring: 25 55% 30%;
-    --chart-1: 25 60% 45%;
-    --chart-2: 30 50% 55%;
-    --chart-3: 20 40% 35%;
-    --chart-4: 35 70% 60%;
-    --chart-5: 15 55% 50%;
-    --radius: 0.5rem;
-    --sidebar-background: 30 20% 93%;
-    --sidebar-foreground: 20 20% 15%;
-    --sidebar-primary: 25 55% 30%;
-    --sidebar-primary-foreground: 30 30% 96%;
-    --sidebar-accent: 30 15% 88%;
-    --sidebar-accent-foreground: 20 20% 15%;
-    --sidebar-border: 28 15% 84%;
-    --sidebar-ring: 25 55% 30%;
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
+    --ring: 0 0% 30%;
+    --chart-1: 0 0% 45%;
+    --chart-2: 0 0% 55%;
+    --chart-3: 0 0% 35%;
+    --chart-4: 0 0% 60%;
+    --chart-5: 0 0% 50%;
+    --radius: 0.25rem;
+    --sidebar-background: 0 0% 93%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 0 0% 30%;
+    --sidebar-primary-foreground: 0 0% 96%;
+    --sidebar-accent: 0 0% 88%;
+    --sidebar-accent-foreground: 0 0% 15%;
+    --sidebar-border: 0 0% 84%;
+    --sidebar-ring: 0 0% 30%;
   }
   .dark {
-    --background: 20 18% 6%;
-    --foreground: 30 15% 88%;
-    --card: 20 15% 10%;
-    --card-foreground: 30 15% 88%;
-    --popover: 20 18% 6%;
-    --popover-foreground: 30 15% 88%;
-    --primary: 30 55% 55%;
-    --primary-foreground: 20 20% 8%;
-    --secondary: 20 12% 14%;
-    --secondary-foreground: 30 15% 85%;
-    --muted: 20 10% 14%;
-    --muted-foreground: 25 10% 55%;
-    --accent: 28 50% 45%;
-    --accent-foreground: 30 20% 95%;
+    --background: 0 0% 6%;
+    --foreground: 0 0% 88%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 88%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 88%;
+    --primary: 0 0% 55%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 8%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 20 12% 18%;
-    --input: 20 12% 18%;
-    --ring: 30 55% 55%;
-    --chart-1: 30 60% 50%;
-    --chart-2: 25 50% 40%;
-    --chart-3: 35 70% 55%;
-    --chart-4: 20 45% 35%;
-    --chart-5: 28 55% 45%;
-    --sidebar-background: 20 15% 8%;
-    --sidebar-foreground: 30 15% 85%;
-    --sidebar-primary: 30 55% 55%;
-    --sidebar-primary-foreground: 20 20% 8%;
-    --sidebar-accent: 20 12% 14%;
-    --sidebar-accent-foreground: 30 15% 85%;
-    --sidebar-border: 20 12% 18%;
-    --sidebar-ring: 30 55% 55%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 55%;
+    --chart-1: 0 0% 50%;
+    --chart-2: 0 0% 40%;
+    --chart-3: 0 0% 55%;
+    --chart-4: 0 0% 35%;
+    --chart-5: 0 0% 45%;
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 0 0% 55%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 0 0% 85%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 0 0% 55%;
   }
 }
 
@@ -107,5 +227,11 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
   }
 }
