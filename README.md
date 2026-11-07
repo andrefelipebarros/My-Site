@@ -36,10 +36,6 @@
 - **Projetos:** grade estática de quatro cartões, sem efeito de rolagem, cada um com capa pontilhada, logos das tecnologias e links para o código.
 - **Contato:** e-mail em destaque, cartão para baixar o currículo (`cv.pdf`) e links para GitHub, LinkedIn e e-mail.
 
-<p align="center">
-  <img src="docs/images/tela-destaques.png" alt="Cartões de destaque mais largos que a coluna, com GIFs do Sábio Diário e do techflow-api">
-</p>
-
 ## Detalhes de interface
 
 - **Duas aparências:** claro por padrão (preto e branco), escuro por escolha de quem visita. A escolha fica salva no navegador.
