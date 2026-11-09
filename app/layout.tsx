@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Andre Felipe | Software Engineer",
+  title: "André Felipe | Portfolio",
   description:
     "Full Stack Developer with 2+ years of experience building scalable web applications. Java, Spring Boot, Quarkus, Angular, Python, Node.js, AWS.",
 };
