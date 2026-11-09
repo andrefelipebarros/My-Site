@@ -8,7 +8,6 @@ import { brandPaths } from "@/lib/brand-icons";
 
 const GITHUB_USER = "andrefelipebarros";
 
-// Handles for Instagram, X and Reddit are guesses: edit the hrefs below.
 const socials: {
   label: string;
   href: string;
@@ -16,9 +15,6 @@ const socials: {
 }[] = [
   { label: "GitHub", href: `https://github.com/${GITHUB_USER}/`, path: brandPaths.github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/andrefelipebarros/", path: brandPaths.linkedin },
-  { label: "Instagram", href: `https://www.instagram.com/${GITHUB_USER}_/`, path: brandPaths.instagram },
-  { label: "X", href: `https://x.com/${GITHUB_USER}`, path: brandPaths.x }, 
-  { label: "Reddit", href: "https://www.reddit.com/user/Adventurous-Bag-2481/", path: brandPaths.reddit },
   { label: "Email", href: "mailto:andre.felipebarros@outlook.com" },
 ];
 

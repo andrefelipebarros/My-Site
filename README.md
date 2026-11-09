@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <strong>Versão 2.0.0</strong> · Next.js 16 (App Router) · React 19.2 · TypeScript · Tailwind CSS 3.4 · next-themes · lucide-react · pnpm · Netlify
+  <strong>Versão 4.0.0</strong> · Next.js 16 (App Router) · React 19.2 · TypeScript · Tailwind CSS 3.4 · next-themes · lucide-react · pnpm · Netlify
 </p>
 
 ---
@@ -26,9 +26,9 @@
 
 ## O que o site mostra
 
-- **Cabeçalho fixo:** links para Journey e Projects, logo em pixel art, troca de idioma com bandeiras redondas, botão **CV** com ícone de download, troca de tema e o botão **Contact** com brilho e seta animados.
+- **Cabeçalho fixo:** links para Journey e Projects, logo em pixel art, troca de idioma com bandeiras redondas, botão **CV** (versão pública, sem telefone), troca de tema e o botão **Contact** com brilho e seta animados.
 - **Faixa "Open to opportunities":** logo abaixo da barra, com um ponto verde pulsando.
-- **Apresentação:** foto do GitHub (com iniciais caso a imagem não carregue), nome em fonte serifada, usuário, cargo, ícones de GitHub, LinkedIn, Instagram, X, Reddit e e-mail, base, hora local atualizada ao vivo e um texto curto sobre mim.
+- **Apresentação:** foto do GitHub (com iniciais caso a imagem não carregue), nome em fonte serifada, usuário, cargo, ícones de GitHub, LinkedIn e e-mail, base, hora local atualizada ao vivo e um texto curto sobre mim.
 - **Faixa de tecnologias:** logos e nomes rolando sem parar, com pausa para quem pede menos movimento.
 - **Destaques:** dois cartões mais largos que a coluna, que "saem" das linhas da página, com um GIF de demonstração, descrição e as tecnologias de cada projeto.
 - **Trajetória (Journey):** duas colunas, Experiência e Formação, com logo de cada empresa e escola, localização, modelo de trabalho, período e etiquetas de tecnologia. A monitoria fica dentro da formação.
@@ -155,7 +155,6 @@ docs/images/                imagens deste README
 - Os GIFs dos destaques pesam cerca de 3 MB cada. Carregam só perto da tela, mas um vídeo em loop seria mais leve e mais nítido.
 - Há um único currículo, em português, usado nos dois idiomas.
 - O `next.config.mjs` ignora erros de tipo no build (`ignoreBuildErrors`). Rode `pnpm exec tsc --noEmit` para conferir os tipos por conta própria.
-- Os endereços de Instagram, X e Reddit no cabeçalho são provisórios e devem ser ajustados para as contas reais.
 
 ## Versões anteriores (legado)
 
